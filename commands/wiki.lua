@@ -11,11 +11,16 @@ local function wikiCommand(msg, args)
     return msg:reply(string.format("I recieved a non-200 status code: %s", res.code))
   end
 
-  local data = json.decode(body).query.pages
+  local data = json.decode(body)
+
+  if not data.query or not data.query.pages then
+    return msg:reply("No results found.")
+  end
+
   local title = string.format("Wiki Search for '%s'", query)
 
   -- See if we have an exact match.
-  for k, v in pairs(data) do
+  for k, v in pairs(data.query.pages) do
     if v.title:lower() == query:lower() then
       return msg:reply {
         embed = {
@@ -30,7 +35,7 @@ local function wikiCommand(msg, args)
   -- Otherwise show all results.
   local description = ""
 
-  for k, v in pairs(data) do
+  for k, v in pairs(data.query.pages) do
     description = description .. string.format("• [%s](%s)", v.title, v.fullurl) .. "\n"
   end
 
