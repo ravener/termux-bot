@@ -1,8 +1,11 @@
 local discordia = require("discordia")
+local os = require("os")
 local round = discordia.extensions.math.round
+local uptime = os.uptime()
 
 local function statsCommand(msg, args, meta)
   local memory = round(process.memoryUsage().heapUsed / 1024 / 1024, 2)
+  local time = discordia.Time.fromSeconds(os.time() - uptime):toString()
   local format = ""
 
   local function add(line, ...)
@@ -11,6 +14,7 @@ local function statsCommand(msg, args, meta)
 
   add("= Bot Statistics =")
   add("")
+  add("• Uptime            :: %s", time)
   add("• Memory Usage      :: %s MB", memory)
   add("• Operating System  :: %s", jit.os)
   add("• Arch              :: %s", jit.arch)
