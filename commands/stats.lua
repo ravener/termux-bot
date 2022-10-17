@@ -1,7 +1,7 @@
 local discordia = require("discordia")
 local os = require("os")
 local round = discordia.extensions.math.round
-local uptime = os.uptime()
+local uptime = os.time()
 
 local function statsCommand(msg, args, meta)
   local memory = round(process.memoryUsage().heapUsed / 1024 / 1024, 2)
