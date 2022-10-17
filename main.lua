@@ -42,13 +42,15 @@ client:on("ready", function()
   print("Logged in as " .. client.user.username)
 end)
 
+local prefix = config.dev and "d!" or "!"
+
 client:on("messageCreate", function(message)
   local content = message.content
 
-  if not content:startswith("!") then return end
+  if not content:startswith(prefix) then return end
 
-  local args = content:split(" ")
-  local command = table.remove(args, 1):sub(2)
+  local args = content:sub(#prefix + 1):trim():split(" ")
+  local command = table.remove(args, 1)
   local cmd = commands[command] or commands[aliases[command]]
 
   if not cmd then return end
