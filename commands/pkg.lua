@@ -79,7 +79,7 @@ local function pkgCommand(msg, args)
     return msg:reply("Invalid repository given.\n\nValid values include: main, x11, root")
   end
 
-  if arch ~= "arm" and arch ~= "aarch64" and arch ~= "x86_64" and arch ~= "i686" then
+  if arch ~= "all" and arch ~= "arm" and arch ~= "aarch64" and arch ~= "x86_64" and arch ~= "i686" then
     return msg:reply("Invalid arch given.\n\nValid values include: arm, aarch64, x86_64, i686")
   end
 
