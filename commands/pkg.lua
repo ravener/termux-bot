@@ -22,6 +22,11 @@ end
 -- Fetches the package index and caches it into filesystem.
 local function download(repo, arch)
   local index = fetch(repo, arch)
+
+  if not fs.existsSync("data") then
+    fs.mkdirSync("data")
+  end
+
   fs.writeFileSync(string.format("data/%s-%s", repo, arch), index)
   return index
 end
