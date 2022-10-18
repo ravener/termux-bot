@@ -5,15 +5,14 @@ local function execCommand(msg, args, meta)
   local arg = meta.rawArgs:gsub('```\n?', '') -- strip markdown codeblocks
 
   cp.exec(arg, coroutine.wrap(function (err, stdout, stderr)
-
-    if err then
-      return msg:reply(string.format("Error: ```\n%s```", pp.strip(pp.dump(err))))
-    end
-
     local results = ""
 
+    if err then
+      results = string.format("**Error**\n```\n%s```", pp.strip(pp.dump(err)))
+    end
+
     if #stdout > 0 then
-      results = string.format("**stdout**\n```\n%s```", stdout)
+      results = results .. string.format("\n**stdout**\n```\n%s```", stdout)
     end
 
     if #stderr > 0 then
