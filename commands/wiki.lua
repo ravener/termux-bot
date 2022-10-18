@@ -1,11 +1,12 @@
 local http = require("coro-http")
 local json = require("json")
+local querystring = require("querystring")
 
 local color = 0xFFAB87
 
 local function wikiCommand(msg, args)
   local query = table.concat(args, " ")
-  local res, body = http.request("GET", string.format("https://wiki.termux.com/api.php?action=query&generator=search&gsrsearch=%s&gsrwhat=text&prop=info&inprop=url&format=json", query))
+  local res, body = http.request("GET", string.format("https://wiki.termux.com/api.php?action=query&generator=search&gsrsearch=%s&gsrwhat=text&prop=info&inprop=url&format=json", querystring.urlencode(query)))
 
   if res.code ~= 200 then
     return msg:reply(string.format("I recieved a non-200 status code: %s", res.code))
