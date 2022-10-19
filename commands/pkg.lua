@@ -113,8 +113,8 @@ local function pkgCommand(msg, args)
   local hashes = string.format("**MD5:** %s\n**SHA1:** %s\n**SHA256:** %s\n**SHA512:** %s", info.md5sum, info.sha1, info.sha256, info.sha512)
   local installedSize = humanize(tonumber(info["installed-size"]))
   local size = humanize(tonumber(info.size) / 1024)
-  local url = string.format("https://grimler.se/%s", info.filename)
-  local deb = string.format(" [.deb](%s) (%s)", url, size)
+  local url = string.format("https://grimler.se/termux-%s/%s", info.repo, info.filename)
+  local deb = string.format("📥 [.deb](%s) (%s)", url, size)
 
   local fields = {
     { name = "Version", value = info.version },
