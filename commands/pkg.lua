@@ -1,5 +1,7 @@
 local fs = require("fs")
+local discordia = require("discordia")
 local http = require("coro-http")
+local round = discordia.extensions.math.round
 local color = 0xFFAB87
 
 -- Fetch the package index for the given repo and arch.
@@ -35,7 +37,7 @@ end
 -- otherwise fetches it and caches it.
 local function fetchIndex(repo, arch)
   local path = string.format("data/%s-%s", repo, arch)
-  
+
   if not fs.existsSync(path) then
     return download(repo, arch)
   end
@@ -55,7 +57,7 @@ local function parseIndex(index)
       local x = 0
       while true do
         local line = lines[i + x]:split(": ")
-        info[name][line[1]] = line[2]
+        info[name][line[1]:lower()] = line[2]
         x = x + 1
         if lines[i + x] == "" then break end
       end
@@ -63,6 +65,14 @@ local function parseIndex(index)
   end
 
   return info
+end
+
+local function humanize(size)
+  if size > 1024 then
+    return tostring(round(size / 1024, 2)) .. " MB"
+  end
+
+  return tostring(round(size, 2)) .. " KB"
 end
 
 local function pkgCommand(msg, args)
@@ -89,13 +99,59 @@ local function pkgCommand(msg, args)
     return msg:reply("Package not found.")
   end
   
-  local results = ""
+  --[[local results = ""
 
   for k, v in pairs(index[pkg]) do
     results = results .. k .. ": " .. v .. "\n"
   end
 
-  return msg:reply(string.format("```\n%s```", results))
+  msg:reply(string.format("```\n%s```", results))
+  --]]
+
+  local info = index[pkg]
+
+  local hashes = string.format("**MD5:** %s\n**SHA1:** %s\n**SHA256:** %s\n**SHA512:** %s", info.md5sum, info.sha1, info.sha256, info.sha512)
+  local installedSize = humanize(tonumber(info["installed-size"]))
+  local size = humanize(tonumber(info.size) / 1024)
+  local url = string.format("https://grimler.se/%s", info.filename)
+  local deb = string.format(" [.deb](%s) (%s)", url, size)
+
+  local fields = {
+    { name = "Version", value = info.version },
+    { name = "Maintainer", value = info.maintainer },
+    { name = "Homepage", value = info.homepage }
+    { name = "Hashes", value = hashes },
+    { name = "Installed Size", value = installedSize },
+    { name = "Download", value = deb }
+  }
+
+  if info.depends then
+    local depends = table.concat(info.depends, ", ")
+    table.insert(fields, { name = "Depends", value = depends })
+  end
+
+  if info.breaks then
+    local breaks = table.concat(info.breaks, ", ")
+    table.insert(fields, { name = "Breaks", value = breaks })
+  end
+
+  if info.replaces then
+    local replaces = table.concat(info.replaces, ", ")
+    table.insert(fields, { name = "Replaces", value = replaces })
+  end
+
+  if info.essential then
+    table.insert(fields, { name = "Essential", value = "Yes" })
+  end
+
+  return msg:reply({
+    embed = {
+      title = string.format("Package information for '%s' (%s)", pkg, arch),
+      color = color,
+      description = info.description,
+      fields = fields
+    }
+  })
 end
 
 return {
