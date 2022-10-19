@@ -34,5 +34,6 @@ end
 return {
   run = execCommand,
   aliases = {"shell"},
-  ownerOnly = true
+  ownerOnly = true,
+  description = "Executes commandline code."
 }

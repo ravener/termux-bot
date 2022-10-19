@@ -57,5 +57,6 @@ end
 return {
   run = evalCommand,
   aliases = {"lua"},
-  ownerOnly = true
+  ownerOnly = true,
+  description = "Evaluates Lua code"
 }

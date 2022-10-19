@@ -26,5 +26,6 @@ local function statsCommand(msg, args, meta)
 end
 
 return {
-  run = statsCommand
+  run = statsCommand,
+  description = "Returns bot statistics."
 }

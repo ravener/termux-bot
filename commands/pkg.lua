@@ -99,5 +99,6 @@ local function pkgCommand(msg, args)
 end
 
 return {
-  run = pkgCommand
+  run = pkgCommand,
+  description = "Show information about a package."
 }

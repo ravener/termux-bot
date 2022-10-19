@@ -8,5 +8,7 @@ end
 
 return {
   run = shutdownCommand,
-  ownerOnly = true
+  ownerOnly = true,
+  aliases = {"restart"},
+  description = "Shuts down the bot."
 }

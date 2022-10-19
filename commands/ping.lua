@@ -5,5 +5,6 @@ end
 
 return {
   run = pingCommand,
-  aliases = {"pong"}
+  aliases = {"pong"},
+  description = "Checks if the bot is working."
 }
