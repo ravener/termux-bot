@@ -119,7 +119,7 @@ local function pkgCommand(msg, args)
   local fields = {
     { name = "Version", value = info.version },
     { name = "Maintainer", value = info.maintainer },
-    { name = "Homepage", value = info.homepage }
+    { name = "Homepage", value = info.homepage },
     { name = "Hashes", value = hashes },
     { name = "Installed Size", value = installedSize },
     { name = "Download", value = deb }
