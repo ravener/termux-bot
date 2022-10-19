@@ -28,6 +28,9 @@ local function evalCommand(message, args, meta)
   local lines = {}
 
   sandbox.message = message
+  sandbox.client = message.client
+  sandbox.guild = message.guild
+  sandbox.channel = message.channel
   sandbox.require = require
   sandbox.meta = meta
 
