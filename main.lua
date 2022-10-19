@@ -68,7 +68,7 @@ client:on("messageCreate", function(message)
     cmd.run(message, args, {
       commands = commands,
       aliases = aliases,
-      rawArgs = content:sub(#prefix + #command + 1),
+      rawArgs = message.content:sub(#prefix + #command + 1),
       config = config
     })
   end)
