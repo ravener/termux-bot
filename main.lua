@@ -39,7 +39,7 @@ for k, v in fs.scandirSync(DIR) do
 end
 
 client:on("ready", function()
-  print("Logged in as " .. client.user.username)
+  client:setGame("with bash")
 end)
 
 local prefix = config.dev and "d!" or "!"
