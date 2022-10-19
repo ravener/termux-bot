@@ -45,9 +45,8 @@ end)
 local prefix = config.dev and "d!" or "!"
 
 client:on("messageCreate", function(message)
-  local content = message.content
-
-  if not content:startswith(prefix) then return end
+  if message.author.bot then return end
+  if not message.content:startswith(prefix) then return end
 
   local args = content:sub(#prefix + 1):trim():split(" ")
   local command = table.remove(args, 1)
