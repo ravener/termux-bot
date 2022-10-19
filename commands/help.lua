@@ -10,7 +10,7 @@ local function helpCommand(message, args, meta)
     end
   end
 
-  message:reply(string.format("```\n%s```", help))
+  message:reply(string.format("```asciidoc\n%s```", help))
 end
 
 return {
