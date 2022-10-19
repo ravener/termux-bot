@@ -122,27 +122,12 @@ local function pkgCommand(msg, args)
     { name = "Homepage", value = info.homepage },
     { name = "Hashes", value = hashes },
     { name = "Installed Size", value = installedSize },
-    { name = "Download", value = deb }
+    { name = "Download", value = deb },
+    { name = "Depends", value = info.depends or "None" },
+    { name = "Breaks", value = info.breaks or "None" },
+    { name = "Replaces", value = info.replaces or "None" },
+    { name = "Essential", value = info.essential or "No" }
   }
-
-  if info.depends then
-    local depends = table.concat(info.depends, ", ")
-    table.insert(fields, { name = "Depends", value = depends })
-  end
-
-  if info.breaks then
-    local breaks = table.concat(info.breaks, ", ")
-    table.insert(fields, { name = "Breaks", value = breaks })
-  end
-
-  if info.replaces then
-    local replaces = table.concat(info.replaces, ", ")
-    table.insert(fields, { name = "Replaces", value = replaces })
-  end
-
-  if info.essential then
-    table.insert(fields, { name = "Essential", value = "Yes" })
-  end
 
   return msg:reply({
     embed = {
