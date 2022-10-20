@@ -98,18 +98,8 @@ local function pkgCommand(msg, args)
   if not index[pkg] then
     return msg:reply("Package not found.")
   end
-  
-  --[[local results = ""
-
-  for k, v in pairs(index[pkg]) do
-    results = results .. k .. ": " .. v .. "\n"
-  end
-
-  msg:reply(string.format("```\n%s```", results))
-  --]]
 
   local info = index[pkg]
-
   local hashes = string.format("**MD5:** %s\n**SHA1:** %s\n**SHA256:** %s\n**SHA512:** %s", info.md5sum, info.sha1, info.sha256, info.sha512)
   local installedSize = humanize(tonumber(info["installed-size"]))
   local size = humanize(tonumber(info.size) / 1024)
