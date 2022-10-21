@@ -1,11 +1,13 @@
 local discordia = require("discordia")
 discordia.extensions.string()
 
+local timer = require("timer")
 local fs = require("fs")
 local json = require("json")
 local pathjoin = require("pathjoin")
 local pp = require("pretty-print")
 local config = json.decode(fs.readFileSync("config.json"))
+local status = json.decode(fs.readFileSync("status.json"))
 local client = discordia.Client()
 local commands = {}
 local aliases = {}
@@ -39,7 +41,10 @@ for k, v in fs.scandirSync(DIR) do
 end
 
 client:on("ready", function()
-  client:setGame("with bash")
+  -- Set a random status every 30 seconds.
+  timer.setInterval(30 * 1000, coroutine.wrap(function ()
+    client:setGame(status[math.random(#status)])
+  end))
 end)
 
 local prefix = config.dev and "d!" or "!"
