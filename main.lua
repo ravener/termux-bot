@@ -41,6 +41,8 @@ for k, v in fs.scandirSync(DIR) do
 end
 
 client:on("ready", function()
+  client:setGame(status[math.random(#status)])
+
   -- Set a random status every 30 seconds.
   timer.setInterval(30 * 1000, coroutine.wrap(function ()
     client:setGame(status[math.random(#status)])
