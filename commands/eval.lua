@@ -24,7 +24,8 @@ local function code(str)
 end
 
 local function evalCommand(message, args, meta)
-  local arg = meta.rawArgs:gsub('```\n?', '') -- strip markdown codeblocks
+  -- Strip markdown codeblocks
+  local arg = meta.rawArgs:gsub('```lua\n?', ''):gsub('```\n?', '')
   local lines = {}
 
   sandbox.message = message
@@ -54,7 +55,9 @@ local function evalCommand(message, args, meta)
     lines = lines:sub(1, 1990)
   end
 
-  return message:reply(code(lines))
+  if #lines > 0 then
+    message:reply(code(lines))
+  end
 end
 
 return {
