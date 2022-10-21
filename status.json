@@ -1,6 +1,6 @@
 [
   {
-    "name": "with bash",
+    "name": "bash 5.2",
     "type": 0
   },
   {
@@ -9,6 +9,22 @@
   },
   {
     "name": "with ones and zeroes",
+    "type": 0
+  },
+  {
+    "name": "NeoVim",
+    "type": 0
+  },
+  {
+    "name": "where ~ is still $HOME",
+    "type": 0
+  },
+  {
+    "name": "/data/data/com.termux/files/home",
+    "type": 0
+  },
+  {
+    "name": "rm -rf /",
     "type": 0
   }
 ]
