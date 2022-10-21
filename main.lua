@@ -43,8 +43,8 @@ end
 client:on("ready", function()
   client:setGame(status[math.random(#status)])
 
-  -- Set a random status every 30 seconds.
-  timer.setInterval(30 * 1000, coroutine.wrap(function ()
+  -- Set a random status every minute.
+  timer.setInterval(60 * 1000, coroutine.wrap(function ()
     client:setGame(status[math.random(#status)])
   end))
 end)
