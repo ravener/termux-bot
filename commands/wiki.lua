@@ -5,6 +5,10 @@ local querystring = require("querystring")
 local color = 0xFFAB87
 
 local function wikiCommand(msg, args)
+  if #args < 1 then
+    return msg:reply("Usage: `!wiki <query>`")
+  end
+
   local query = table.concat(args, " ")
   local res, body = http.request("GET", string.format("https://wiki.termux.com/api.php?action=query&generator=search&gsrsearch=%s&gsrwhat=text&prop=info&inprop=url&format=json", querystring.urlencode(query)))
 
