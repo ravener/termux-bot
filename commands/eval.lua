@@ -44,10 +44,10 @@ local function evalCommand(message, args, meta)
   end
 
   local fn, syntaxError = load(arg, 'DiscordBot', 't', sandbox)
-  if not fn then return message:reply(code(syntaxError)) end
+  if not fn then return code(syntaxError) end
 
   local success, runtimeError = pcall(fn)
-  if not success then return message:reply(code(runtimeError)) end
+  if not success then return code(runtimeError) end
 
   lines = table.concat(lines, '\n')
 
@@ -56,7 +56,7 @@ local function evalCommand(message, args, meta)
   end
 
   if #lines > 0 then
-    message:reply(code(lines))
+    return code(lines)
   end
 end
 

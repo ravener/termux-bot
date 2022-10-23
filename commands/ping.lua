@@ -1,6 +1,6 @@
 
 local function pingCommand(message)
-  message:reply("Pong!")
+  return "Pong!"
 end
 
 return {

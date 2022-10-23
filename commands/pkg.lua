@@ -77,8 +77,7 @@ end
 
 local function pkgCommand(msg, args)
   if #args < 1 then
-    msg:reply("Usage: `!pkg <package name> [repo=main] [arch=aarch64]`")
-    return
+    return "Usage: `!pkg <package name> [repo=main] [arch=aarch64]`"
   end
 
   local pkg = args[1]:lower()
@@ -86,17 +85,17 @@ local function pkgCommand(msg, args)
   local arch = (args[3] or "aarch64"):lower()
 
   if repo ~= "main" and repo ~= "x11" and repo ~= "root" then
-    return msg:reply("Invalid repository given.\n\nValid values include: main, x11, root")
+    return "Invalid repository given.\n\nValid values include: main, x11, root"
   end
 
   if arch ~= "all" and arch ~= "arm" and arch ~= "aarch64" and arch ~= "x86_64" and arch ~= "i686" then
-    return msg:reply("Invalid arch given.\n\nValid values include: arm, aarch64, x86_64, i686")
+    return "Invalid arch given.\n\nValid values include: all, arm, aarch64, x86_64, i686"
   end
 
   local index = parseIndex(fetchIndex(repo, arch))
   
   if not index[pkg] then
-    return msg:reply("Package not found.")
+    return "Package not found."
   end
 
   local info = index[pkg]
@@ -119,14 +118,14 @@ local function pkgCommand(msg, args)
     { name = "Essential", value = info.essential or "No" }
   }
 
-  return msg:reply({
+  return {
     embed = {
       title = string.format("Package information for '%s' (%s)", pkg, arch),
       color = color,
       description = info.description,
       fields = fields
     }
-  })
+  }
 end
 
 return {

@@ -22,7 +22,7 @@ local function statsCommand(msg, args, meta)
   add("• LuaJIT version    :: %s", jit.version)
   add("• Discordia version :: %s", discordia.package.version)
 
-  msg:reply(string.format("```asciidoc\n%s```", format))
+  return string.format("```asciidoc\n%s```", format)
 end
 
 return {
