@@ -37,8 +37,9 @@ end
 -- otherwise fetches it and caches it.
 local function fetchIndex(repo, arch)
   local path = string.format("data/%s-%s", repo, arch)
+  local stats = fs.statSync(path)
 
-  if not fs.existsSync(path) then
+  if not stats or (os.time() - stats.mtime.sec) > 6 * 60 * 60 then
     return download(repo, arch)
   end
 
