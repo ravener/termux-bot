@@ -26,5 +26,9 @@
   {
     "name": "rm -rf /",
     "type": 0
+  },
+  {
+    "name": "Emacs",
+    "type": 0
   }
 ]
