@@ -34,6 +34,7 @@ local function evalCommand(message, args, meta)
   sandbox.channel = message.channel
   sandbox.require = require
   sandbox.meta = meta
+  sandbox.db = meta.db
 
   sandbox.print = function(...)
     table.insert(lines, printLine(...))

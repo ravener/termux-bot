@@ -3,3 +3,4 @@ gateway.json
 discordia.log
 config.json
 data
+db.sqlite

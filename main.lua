@@ -6,9 +6,15 @@ local fs = require("fs")
 local json = require("json")
 local pathjoin = require("pathjoin")
 local pp = require("pretty-print")
+
 local config = json.decode(fs.readFileSync("config.json"))
 local status = json.decode(fs.readFileSync("status.json"))
-local client = discordia.Client()
+local logLevel = discordia.enums.logLevel
+
+local client = discordia.Client({
+  logLevel = config.dev and logLevel.debug or logLevel.info
+})
+
 local count = discordia.extensions.table.count
 local commands = {}
 local aliases = {}
@@ -17,7 +23,6 @@ local replies = {}
 
 local env = setmetatable({
   require = require, -- inject luvit's custom require
-  loader = loader, -- inject this module
 }, {__index = _G})
 
 for k, v in fs.scandirSync(DIR) do
@@ -42,18 +47,47 @@ for k, v in fs.scandirSync(DIR) do
   end
 end
 
+-- Setup database
+local sqlite = require("sqlite3")
+local db = sqlite.open("db.sqlite")
+
+db:exec[[
+CREATE TABLE IF NOT EXISTS "members" (
+  id TEXT PRIMARY KEY NOT NULL,
+  points INTEGER NOT NULL DEFAULT 0
+)
+]]
+
+local stmt = db:prepare("INSERT INTO members (id, points) VALUES(?, ?) ON CONFLICT DO UPDATE SET points = points + ?")
+
 client:on("ready", function()
   client:setGame(status[math.random(#status)])
 
   -- Set a random status every minute.
-  timer.setInterval(60 * 1000, coroutine.wrap(function ()
-    client:setGame(status[math.random(#status)])
-  end))
+  timer.setInterval(60 * 1000, function ()
+    coroutine.wrap(client.setGame)(client, status[math.random(#status)])
+  end)
 end)
 
 local prefix = config.dev and "d!" or "!"
 
-function handleCommands(message)
+local function handlePoints(message)
+  -- Ignores bots and DMs
+  if not message.guild or message.author.bot then return end
+  -- Ignore the memes channel.
+  if message.channel.name == "memes" then return end
+  -- Ignore messages shorter than 5 characters.
+  -- This should prevent most short messages like:
+  -- ok, okay, no, hi, lmao, wait, what, wow, etc.
+  -- So points are earned by meaninful conversations instead.
+  if #message.content < 5 then return end
+
+  local points = math.random(1, 5)
+
+  stmt:reset():bind(message.author.id, points, points):step()
+end
+
+local function handleCommands(message)
   if message.author.bot then return end
   if not message.content:startswith(prefix) then return end
 
@@ -65,12 +99,12 @@ function handleCommands(message)
 
   if cmd.guildOnly and not message.guild then
     message:reply("This command can only be ran in a server.")
-    return
+    return true
   end
 
   if cmd.ownerOnly and message.author.id ~= config.owner then
     message:reply("This command can only be ran by the bot owner.")
-    return
+    return true
   end
 
   local success, value = pcall(function ()
@@ -78,18 +112,20 @@ function handleCommands(message)
       commands = commands,
       aliases = aliases,
       rawArgs = message.content:sub(#prefix + #command + 1),
-      config = config
+      config = config,
+      db = db
     })
   end)
 
   if not success then
     message:reply(string.format("```lua\n%s```", pp.strip(pp.dump(value))))
+    return true
   end
 
   local content
   local reply, err
 
-  if type(value) == "string" then
+  if type(value) == "string" and #value > 0 then
     content = {
       content = value,
       reference = { message = message }
@@ -99,10 +135,12 @@ function handleCommands(message)
     content = value
   end
 
-  if replies[message.id] then
-    _, err = replies[message.id]:update(content)
-  else
-    reply, err = message:reply(content)
+  if content then
+    if replies[message.id] then
+      _, err = replies[message.id]:update(content)
+    else
+      reply, err = message:reply(content)
+    end
   end
 
   if reply then
@@ -115,10 +153,14 @@ function handleCommands(message)
   elseif err then
     client:error(err)
   end
+
+  return true
 end
 
 client:on("messageCreate", function (message)
-  handleCommands(message)
+  if not handleCommands(message) then
+    handlePoints(message)
+  end
 end)
 
 client:on("messageUpdate", function (message)
