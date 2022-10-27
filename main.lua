@@ -57,7 +57,7 @@ function handleCommands(message)
   if message.author.bot then return end
   if not message.content:startswith(prefix) then return end
 
-  local args = message.content:sub(#prefix + 1):trim():split(" ")
+  local args = message.content:sub(#prefix + 1):trim():split("[\n\t ]+")
   local command = table.remove(args, 1)
   local cmd = commands[command] or commands[aliases[command]]
 
