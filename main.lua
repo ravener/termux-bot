@@ -98,6 +98,7 @@ end
 
 local function handleCommands(message)
   if message.author.bot then return end
+  if message.channel.name == "general" then return end
   if not message.content:startswith(prefix) then return end
 
   local args = message.content:sub(#prefix + 1):trim():split("[\n\t ]+")
