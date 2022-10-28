@@ -78,6 +78,8 @@ local function handlePoints(message)
   if not message.guild or message.author.bot then return end
   -- Ignore the memes channel.
   if message.channel.name == "memes" or message.channel.name == "bots" then return end
+  -- Ignore staff category
+  if message.channel.category and message.channel.category.id == "810520642248114176" then return end
   -- Ignore messages shorter than 5 characters.
   -- This should prevent most short messages like:
   -- ok, okay, no, hi, lmao, wait, what, wow, etc.
@@ -91,7 +93,7 @@ local function handlePoints(message)
     if message.content:startswith(v) then return end
   end
 
-  local points = math.random(1, 5)
+  local points = math.random(1, message.channel.name == "proficient" and 4 or 8)
   local rows = stmt:reset():bind(message.author.id, points, points):step()
 
   -- Timeout the user.
@@ -101,7 +103,7 @@ local function handlePoints(message)
     timeouts[message.author.id] = nil
   end)
 
-  if tonumber(rows[2]) >= 5000 and not message.member:hasRole(activeRole) then
+  if tonumber(rows[2]) >= 8192 and not message.member:hasRole(activeRole) then
     message.member:addRole(activeRole)
 
     local modlogs = guild:getChannel("810521091973840957")
