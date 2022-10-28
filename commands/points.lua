@@ -10,9 +10,9 @@ local function pointsCommand(message, args, meta)
     return "You have no points."
   end
 
-  local level = math.floor(0.1 * math.sqrt(tonumber(points)))
+  local level = math.floor(0.1 * math.sqrt(tonumber(points))) + 1
   local bits = reformatInt(tonumber(points))
-  return string.format("You are **level %d** with **%d bits**", level, bits)
+  return string.format("You are currently level **%d** with **%d** bits.", level, bits)
 end
 
 return {
