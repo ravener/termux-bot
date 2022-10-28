@@ -1,0 +1,46 @@
+local discordia = require("discordia")
+local round = discordia.extensions.math.round
+local search = discordia.extensions.table.search
+local slice = discordia.extensions.table.slice
+
+local function reformatInt(i)
+  local res = tostring(i):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
+  return res
+end
+
+local function leaderboardCommand(message, args, meta)
+  local page = tonumber(args[1]) or 1
+  local rows = meta.db:exec("SELECT * FROM members ORDER BY points DESC")
+
+  if not rows then
+    return "No results found, is this a dead server?"
+  end
+
+  local totalPages = math.max(round(#rows.id / 10), 1)
+
+  if page > totalPages then
+    return string.format("There are only **%d** pages.", totalPages)
+  end
+
+  local leaderboard = {}
+  local topIDs = slice(rows.id, ((page - 1) * 10) + 1, page * 10)
+  local topPoints = slice(rows.points, ((page - 1) * 10) + 1, page * 10)
+
+  for i, id in ipairs(topIDs) do
+    local points = tonumber(topPoints[i])
+    local user = message.client:getUser(id)
+    table.insert(leaderboard, string.format("- %s ❯ %s\n    => %s bits", tostring(((page - 1) * 10) + i):pad(2, "right", "0"), user.tag, reformatInt(points)))
+  end
+
+  local pos = search(rows.id, message.author.id)
+  local posTxt = pos == nil and "??" or tostring(pos):pad(2, "right", "0")
+  table.insert(leaderboard, string.format("\n+ [%s] ❯ %s\n    => %s bits", posTxt, message.author.tag, reformatInt(tonumber(rows.points[pos]))))
+  return string.format("Leaderboard (Page **%d** out of **%d**)\n```\n%s\n```", page, totalPages, table.concat(leaderboard, "\n"))
+end
+
+return {
+  run = leaderboardCommand,
+  description = "View the most active users",
+  aliases = {"lb"},
+  guildOnly = true
+}

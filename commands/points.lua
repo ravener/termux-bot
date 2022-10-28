@@ -1,5 +1,5 @@
 
-function reformatInt(i)
+local function reformatInt(i)
   return tostring(i):reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
 end
 

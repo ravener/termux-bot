@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS "members" (
 )
 ]]
 
-local stmt = db:prepare("INSERT INTO members (id, points) VALUES(?, ?) ON CONFLICT DO UPDATE SET points = points + ?")
+local stmt = db:prepare("INSERT INTO members (id, points) VALUES(?, ?) ON CONFLICT DO UPDATE SET points = points + ? RETURNING *")
 
 client:on("ready", function()
   client:setGame(status[math.random(#status)])
