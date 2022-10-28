@@ -209,4 +209,10 @@ client:on("messageDelete", function (message)
   end
 end)
 
+local function quote(s) return "'" .. s .. "'" end
+
+client:on("memberLeave", function (member)
+  db:exec("DELETE FROM members WHERE id = " .. quote(member.id))
+end)
+
 client:run(config.token)
