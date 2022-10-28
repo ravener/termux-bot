@@ -71,6 +71,7 @@ client:on("ready", function()
 end)
 
 local prefix = config.dev and "d!" or "!"
+local activeRole = "803685296083828736"
 
 local function handlePoints(message)
   -- Ignores bots and DMs
@@ -86,7 +87,7 @@ local function handlePoints(message)
   if timeouts[message.author.id] then return end
 
   local points = math.random(1, 5)
-  stmt:reset():bind(message.author.id, points, points):step()
+  local rows = stmt:reset():bind(message.author.id, points, points):step()
 
   -- Timeout the user.
   -- Multiple messages in a window of 5 seconds won't count.
@@ -94,6 +95,22 @@ local function handlePoints(message)
   timer.setTimeout(5000, function ()
     timeouts[message.author.id] = nil
   end)
+
+  if tonumber(rows[2]) >= 5000 and not message.member:hasRole(activeRole) then
+    message.member:addRole(activeRole)
+
+    local modlogs = guild:getChannel("810521091973840957")
+
+    modlogs:send {
+      embed = {
+        title = "Active Role Handout",
+        color = 0x00FF00,
+        author = { name = message.author.tag, icon_url = message.author.getAvatarURL() },
+        description = string.format("Given the active role to **%s**", message.author.tag),
+        footer = { text = string.format("User ID: %s", message.author.id) }
+      }
+    }
+  end
 end
 
 local function handleCommands(message)
