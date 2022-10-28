@@ -12,7 +12,9 @@ local function pointsCommand(message, args, meta)
 
   local level = math.floor(0.1 * math.sqrt(tonumber(points))) + 1
   local bits = reformatInt(tonumber(points))
-  return string.format("You are currently level **%d** with **%d** bits.", level, bits)
+  local nextLevel = (level + 1)^2 * 100
+  local nextPoints = reformatInt(nextLevel - tonumber(points))
+  return string.format("You are currently level **%d** with **%s** bits.\nYou need **%s** bits for the next level (**%s** more to go!)", level, bits, rereformatInt(nextLevel), nextPoints)
 end
 
 return {
