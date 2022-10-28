@@ -77,7 +77,7 @@ local function handlePoints(message)
   -- Ignores bots and DMs
   if not message.guild or message.author.bot then return end
   -- Ignore the memes channel.
-  if message.channel.name == "memes" then return end
+  if message.channel.name == "memes" or message.channel.name == "bots" then return end
   -- Ignore messages shorter than 5 characters.
   -- This should prevent most short messages like:
   -- ok, okay, no, hi, lmao, wait, what, wow, etc.
