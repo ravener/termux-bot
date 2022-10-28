@@ -97,7 +97,7 @@ local function handlePoints(message)
   -- Timeout the user.
   -- Multiple messages in a window of 5 seconds won't count.
   timeouts[message.author.id] = true
-  timer.setTimeout(5000, function ()
+  timer.setTimeout(6000, function ()
     timeouts[message.author.id] = nil
   end)
 
