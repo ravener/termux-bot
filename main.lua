@@ -20,6 +20,7 @@ local commands = {}
 local aliases = {}
 local DIR = "./commands"
 local replies = {}
+local timeouts = {}
 
 local env = setmetatable({
   require = require, -- inject luvit's custom require
@@ -81,10 +82,18 @@ local function handlePoints(message)
   -- ok, okay, no, hi, lmao, wait, what, wow, etc.
   -- So points are earned by meaninful conversations instead.
   if #message.content < 5 then return end
+  -- If user is on a timeout, it doesn't count.
+  if timeouts[message.author.id] then return end
 
   local points = math.random(1, 5)
-
   stmt:reset():bind(message.author.id, points, points):step()
+
+  -- Timeout the user.
+  -- Multiple messages in a window of 5 seconds won't count.
+  timeouts[message.author.id] = true
+  timer.setTimeout(5000, function ()
+    timeouts[message.author.id] = nil
+  end)
 end
 
 local function handleCommands(message)
