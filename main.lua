@@ -85,6 +85,11 @@ local function handlePoints(message)
   if #message.content < 5 then return end
   -- If user is on a timeout, it doesn't count.
   if timeouts[message.author.id] then return end
+  
+  -- Ignore bot commands.
+  for i, v in pairs({ "!", "?", "/", "n!" }) do
+    if message.content:startswith(v) then return end
+  end
 
   local points = math.random(1, 5)
   local rows = stmt:reset():bind(message.author.id, points, points):step()
