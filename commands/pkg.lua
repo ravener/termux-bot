@@ -4,15 +4,31 @@ local http = require("coro-http")
 local round = discordia.extensions.math.round
 local color = 0xFFAB87
 
--- Fetch the package index for the given repo and arch.
-local function fetch(repo, arch)
+
+local function getDownloadURL(repo, filename)
+  if repo == "tur" then
+    return string.format("https://tur.kcubeterm.com/%s", filename)
+  end
+
+  return string.format("https://grimler.se/termux-%s/%s", repo, filename)
+end
+
+local function getURL(repo, arch)
+  if repo == "tur" then
+    return string.format("https://tur.kcubeterm.com/dists/tur-packages/tur/binary-%s/Packages", arch)
+  end
+
   local dir = {"stable", "main"}
   
   if repo == "x11" then dir = {"x11", "main"} end
   if repo == "root" then dir = {"root", "stable"} end
 
-  local url = string.format("https://grimler.se/termux-%s/dists/%s/%s/binary-%s/Packages", repo, dir[1], dir[2], arch)
-  local res, body = http.request("GET", url)
+  return string.format("https://grimler.se/termux-%s/dists/%s/%s/binary-%s/Packages", repo, dir[1], dir[2], arch)
+end
+
+-- Fetch the package index for the given repo and arch.
+local function fetch(repo, arch)
+  local res, body = http.request("GET", getURL(repo, arch))
 
   if res.code ~= 200 then
     error(string.format("Non-200 Status Code: %d", res.code))
@@ -85,8 +101,8 @@ local function pkgCommand(msg, args)
   local repo = (args[2] or "main"):lower()
   local arch = (args[3] or "aarch64"):lower()
 
-  if repo ~= "main" and repo ~= "x11" and repo ~= "root" then
-    return "Invalid repository given.\n\nValid values include: main, x11, root"
+  if repo ~= "main" and repo ~= "x11" and repo ~= "root" and repo ~= "tur" then
+    return "Invalid repository given.\n\nValid values include: main, x11, root, tur"
   end
 
   if arch ~= "all" and arch ~= "arm" and arch ~= "aarch64" and arch ~= "x86_64" and arch ~= "i686" then
@@ -103,7 +119,7 @@ local function pkgCommand(msg, args)
   local hashes = string.format("**MD5:** %s\n**SHA1:** %s\n**SHA256:** %s\n**SHA512:** %s", info.md5sum, info.sha1, info.sha256, info.sha512)
   local installedSize = humanize(tonumber(info["installed-size"]))
   local size = humanize(tonumber(info.size) / 1024)
-  local url = string.format("https://grimler.se/termux-%s/%s", repo, info.filename)
+  local url = getDownloadURL(repo, info.filename)
   local deb = string.format("📥 [.deb](%s) (%s)", url, size)
 
   local fields = {
