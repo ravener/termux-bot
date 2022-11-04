@@ -29,12 +29,13 @@ local function leaderboardCommand(message, args, meta)
   for i, id in ipairs(topIDs) do
     local points = tonumber(topPoints[i])
     local user = message.client:getUser(id)
-    table.insert(leaderboard, string.format("- %s ❯ %s\n    => %s bits", tostring(((page - 1) * 10) + i):pad(2, "right", "0"), user.tag, reformatInt(points)))
+    table.insert(leaderboard, string.format("- %s ❯ %s\n    => %s bit%s", tostring(((page - 1) * 10) + i):pad(2, "right", "0"), user.tag, reformatInt(points), points > 1 and "s" or ""))
   end
 
   local pos = search(rows.id, message.author.id)
   local posTxt = pos == nil and "??" or tostring(pos):pad(2, "right", "0")
-  table.insert(leaderboard, string.format("\n+ [%s] ❯ %s\n    => %s bits", posTxt, message.author.tag, reformatInt(tonumber(rows.points[pos]))))
+  local points = tonumber(rows.points[pos])
+  table.insert(leaderboard, string.format("\n+ [%s] ❯ %s\n    => %s bit%s", posTxt, message.author.tag, reformatInt(points), points > 1 and "s" or ""))
   return string.format("Leaderboard (Page **%d** out of **%d**)\n```\n%s\n```", page, totalPages, table.concat(leaderboard, "\n"))
 end
 
