@@ -76,8 +76,8 @@ local activeRole = "803685296083828736"
 local function handlePoints(message)
   -- Ignores bots and DMs
   if not message.guild or message.author.bot then return end
-  -- Ignore the memes channel.
-  if message.channel.name == "memes" or message.channel.name == "bots" then return end
+  -- Ignore the #memes and #bots channels.
+  if message.channel.id == "820869096894890015" or message.channel.id == "641655510692790286" then return end
   -- Ignore staff category
   if message.channel.category and message.channel.category.id == "810520642248114176" then return end
   -- Ignore messages shorter than 5 characters.
@@ -93,7 +93,7 @@ local function handlePoints(message)
     if message.content:startswith(v) then return end
   end
 
-  local points = math.random(1, message.channel.name == "proficient" and 4 or 8)
+  local points = math.random(1, message.channel.id == "820884038373605387" and 4 or 8)
   local rows = stmt:reset():bind(message.author.id, points, points):step()
 
   -- Timeout the user.
@@ -122,7 +122,7 @@ end
 
 local function handleCommands(message)
   if message.author.bot then return end
-  if message.channel.name == "general" then return end
+  if message.channel.id == "641256914684084237" then return end
   if not message.content:startswith(prefix) then return end
 
   local args = message.content:sub(#prefix + 1):trim():split("[\n\t ]+")
