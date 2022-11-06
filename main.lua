@@ -95,8 +95,7 @@ local function handlePoints(message)
 
   -- Earn a random point between 4 to 12.
   -- #proficient channel is restricted to only 4 points.
-  local points = message.channel.id == "820884038373605387" and 4 or math
-  random(4, 12)
+  local points = message.channel.id == "820884038373605387" and 4 or math.random(4, 12)
   local rows = stmt:reset():bind(message.author.id, points, points):step()
 
   -- Timeout the user.
