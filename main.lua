@@ -76,8 +76,8 @@ client:on("ready", function()
   -- Post timezone updates every minute.
   timer.setInterval(60 * 1000, function ()
     local description = {}
-    for id, offset in pairs(tz) do
-      local time = string.format("- <@%s> %s", id, os.date("!%l:%M %p (%R)", os.time() + offset * 60 * 60))
+    for i, user in ipairs(tz) do
+      local time = string.format("- <@%s> %s", user.id, os.date("!%l:%M %p (%R)", os.time() + user.offset * 60 * 60))
       table.insert(description, time)
     end
 
