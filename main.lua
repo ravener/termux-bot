@@ -77,7 +77,7 @@ client:on("ready", function()
   timer.setInterval(60 * 1000, function ()
     local description = {}
     for id, offset in pairs(tz) do
-      local time = string.format("- <@%s> %s", id, os.date("%l:%m (%R)", os.time() + offset * 60 * 60))
+      local time = string.format("- <@%s> %s", id, os.date("%l:%m %p (%R)", os.time() + offset * 60 * 60))
       table.insert(description, time)
     end
 
