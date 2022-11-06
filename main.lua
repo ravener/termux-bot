@@ -9,6 +9,7 @@ local pp = require("pretty-print")
 
 local config = json.decode(fs.readFileSync("config.json"))
 local status = json.decode(fs.readFileSync("status.json"))
+local tz = json.decode(fs.readFileSync("tz.json"))
 local logLevel = discordia.enums.logLevel
 
 local client = discordia.Client({
@@ -67,6 +68,26 @@ client:on("ready", function()
   -- Set a random status every minute.
   timer.setInterval(60 * 1000, function ()
     coroutine.wrap(client.setGame)(client, status[math.random(#status)])
+  end)
+
+  local channel = client:getChannel("898421586758107206")
+  local message = channel:getMessage("1038849777762320474")
+
+  -- Post timezone updates every minute.
+  timer.setInterval(60 * 1000, function ()
+    local description = {}
+    for id, offset in pairs(tz) do
+      local time = string.format("- <@%s> %s", id, os.date("%l:%m (%R)", os.time() + offset * 60 * 60))
+      table.insert(description, time)
+    end
+
+    coroutine.wrap(message.update)(message, {
+      embed = {
+        title = "Mod Timezones",
+        color = 0xFFAB87,
+        description = table.concat(description, "\n")
+      }
+    })
   end)
 end)
 
