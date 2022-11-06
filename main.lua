@@ -89,7 +89,7 @@ local function handlePoints(message)
   if timeouts[message.author.id] then return end
   
   -- Ignore bot commands.
-  for i, v in pairs({ "!", "?", "/", "n!" }) do
+  for i, v in pairs({ "!", "?", "/", "n!", "./" }) do
     if message.content:startswith(v) then return end
   end
 
