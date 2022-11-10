@@ -112,7 +112,7 @@ local function pkgCommand(msg, args)
   local index = parseIndex(fetchIndex(repo, arch))
   
   if not index[pkg] then
-    return "Package not found."
+    return string.format("Package not found in `%s` repository.", repo)
   end
 
   local info = index[pkg]
