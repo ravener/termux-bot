@@ -34,5 +34,9 @@
   { 
     "name": "rm -rf $PREFIX",
     "type": 0
+  },
+  {
+    "name": "/dev/null",
+    "type": 0
   }
 ]
