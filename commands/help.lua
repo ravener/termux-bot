@@ -6,7 +6,7 @@ local function helpCommand(message, args, meta)
   for k, v in pairs(meta.commands) do
     if not v.ownerOnly or v.ownerOnly and message.author.id == meta.config.owner then
       local description = v.description or "No Description Provided."
-      help = help .. k:pad(10) .. ":: " .. description .. "\n"
+      help = help .. k:pad(12) .. ":: " .. description .. "\n"
     end
   end
 
