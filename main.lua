@@ -126,7 +126,7 @@ local function handlePoints(message)
     timeouts[message.author.id] = nil
   end)
 
-  if tonumber(rows[2]) >= 8192 and not message.member:hasRole(activeRole) then
+  if tonumber(rows[2]) >= 4096 and not message.member:hasRole(activeRole) then
     message.member:addRole(activeRole)
 
     local modlogs = guild:getChannel("810521091973840957")
