@@ -129,7 +129,7 @@ local function handlePoints(message)
   if tonumber(rows[2]) >= 4096 and not message.member:hasRole(activeRole) then
     message.member:addRole(activeRole)
 
-    local modlogs = guild:getChannel("810521091973840957")
+    local modlogs = message.guild:getChannel("810521091973840957")
 
     modlogs:send {
       embed = {
