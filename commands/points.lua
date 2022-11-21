@@ -4,17 +4,20 @@ local function reformatInt(i)
 end
 
 local function pointsCommand(message, args, meta)
-  local points = meta.db:rowexec("SELECT (points) FROM members WHERE id = " .. "'" .. message.author.id .. "'")
+  local user = message.mentionedUsers.first or message.author
+  local points = meta.db:rowexec("SELECT (points) FROM members WHERE id = " .. "'" .. user.id .. "'")
 
   if not points then
-    return "You have no points."
+    local target = user == message.author and "You have" or "That user has"
+    return target .. " no points."
   end
 
   local level = math.floor(0.1 * math.sqrt(tonumber(points))) + 1
   local bits = reformatInt(tonumber(points))
   local nextLevel = (level + 1)^2 * 100
   local nextPoints = reformatInt(nextLevel - tonumber(points))
-  return string.format("You are currently level **%d** with **%s** bits.\nYou need **%s** bits for the next level (**%s** more to go!)", level, bits, reformatInt(nextLevel), nextPoints)
+  local target = user == message.author and "You are" or user.username .. " is"
+  return string.format("%s currently level **%d** with **%s** bits.\nYou need **%s** bits for the next level (**%s** more to go!)", target, level, bits, reformatInt(nextLevel), nextPoints)
 end
 
 return {
