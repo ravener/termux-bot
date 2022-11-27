@@ -145,7 +145,7 @@ local function handlePoints(message)
 end
 
 local function handleCommands(message)
-  if message.author.bot then return end
+  if message.author.bot and not message.webhookId then return end
   if not message.content:startswith(prefix) then return end
 
   local args = message.content:sub(#prefix + 1):trim():split("[\n\t ]+")
