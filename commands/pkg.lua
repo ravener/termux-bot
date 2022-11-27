@@ -92,7 +92,7 @@ local function humanize(size)
   return tostring(round(size, 2)) .. " KB"
 end
 
-local function pkgCommand(msg, args)
+local function pkgCommand(msg, args, meta)
   if #args < 1 then
     return "Usage: `!pkg <package name> [repo=main] [arch=aarch64]`"
   end

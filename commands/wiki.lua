@@ -4,7 +4,7 @@ local querystring = require("querystring")
 
 local color = 0xFFAB87
 
-local function wikiCommand(msg, args)
+local function wikiCommand(msg, args, meta)
   if #args < 1 then
     return "Usage: `!wiki <query>`"
   end
