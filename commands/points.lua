@@ -24,5 +24,6 @@ end
 return {
   run = pointsCommand,
   description = "Check your current activity points.",
-  aliases = {"balance", "bal", "bits", "profile", "level"}
+  aliases = {"balance", "bal", "bits", "profile", "level"},
+  restricted = true
 }

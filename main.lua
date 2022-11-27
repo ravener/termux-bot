@@ -22,6 +22,7 @@ local aliases = {}
 local DIR = "./commands"
 local replies = {}
 local timeouts = {}
+local general = "641256914684084237"
 
 local env = setmetatable({
   require = require, -- inject luvit's custom require
@@ -145,7 +146,6 @@ end
 
 local function handleCommands(message)
   if message.author.bot then return end
-  if message.channel.id == "641256914684084237" then return end
   if not message.content:startswith(prefix) then return end
 
   local args = message.content:sub(#prefix + 1):trim():split("[\n\t ]+")
@@ -164,13 +164,16 @@ local function handleCommands(message)
     return true
   end
 
+  if message.channel.id == general and cmd.restricted then return end
+
   local success, value = pcall(function ()
     return cmd.run(message, args, {
       commands = commands,
       aliases = aliases,
       rawArgs = message.content:sub(#prefix + #command + 1),
       config = config,
-      db = db
+      db = db,
+      general = message.channel.id == general
     })
   end)
 

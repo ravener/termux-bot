@@ -23,34 +23,23 @@ local function wikiCommand(msg, args)
   end
 
   local title = string.format("Wiki Search for '%s'", query)
-
-  -- See if we have an exact match.
-  for k, v in pairs(data.query.pages) do
-    if v.title:lower() == query:lower() then
-      return {
-        embed = {
-          title = title,
-          description = string.format("Exact Match Found\n• [%s](%s)", v.title, v.fullurl),
-          color = color
-        }
-      }
-    end
-  end
-
-  -- Otherwise show all results.
   local description = ""
 
   for k, v in pairs(data.query.pages) do
     description = description .. string.format("• [%s](%s)", v.title, v.fullurl) .. "\n"
   end
 
-  return {
-    embed = {
-      title = title,
-      description = description,
-      color = color
+  if meta.general then
+    return title .. "\n" .. description
+  else
+    return {
+      embed = {
+        title = title,
+        description = description,
+        color = color
+      }
     }
-  }
+  end
 end
 
 return {

@@ -53,13 +53,17 @@ local function tldrCommand(msg, args, meta)
     return "Page not found."
   end
 
-  return {
-    embed = {
-      color = 0xFFAB87,
-      title = string.format("%s (%s)", page.title, page.platform),
-      description = page.description
+  if meta.general then
+    return string.format("%s (%s)\n\n%s", page.title, page.platform, page.description)
+  else
+    return {
+      embed = {
+        color = 0xFFAB87,
+        title = string.format("%s (%s)", page.title, page.platform),
+        description = page.description
+      }
     }
-  }
+  end
 end
 
 return {

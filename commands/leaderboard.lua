@@ -43,5 +43,6 @@ return {
   run = leaderboardCommand,
   description = "View the most active users",
   aliases = {"lb"},
-  guildOnly = true
+  guildOnly = true,
+  restricted = true
 }

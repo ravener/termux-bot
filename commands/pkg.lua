@@ -135,14 +135,26 @@ local function pkgCommand(msg, args)
     { name = "Essential", value = info.essential or "No" }
   }
 
-  return {
-    embed = {
-      title = string.format("Package information for '%s' (%s)", pkg, arch),
-      color = color,
-      description = info.description,
-      fields = fields
+  local title = string.format("Package information for '%s' (%s)", pkg, arch)
+
+  if meta.general then
+    local results = title .. "\n"
+
+    for i, v in ipairs(fields) do
+      results = results .. string.format("\n• **%s:** %s", v.name, v.value)
+    end
+
+    return results
+  else
+    return {
+      embed = {
+        title = title,
+        color = color,
+        description = info.description,
+        fields = fields
+      }
     }
-  }
+  end
 end
 
 return {

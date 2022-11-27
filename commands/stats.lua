@@ -27,5 +27,6 @@ end
 
 return {
   run = statsCommand,
-  description = "Returns bot statistics."
+  description = "Returns bot statistics.",
+  restricted = true
 }
