@@ -128,7 +128,7 @@ local function pkgCommand(msg, args, meta)
     { name = "Homepage", value = info.homepage },
     { name = "Hashes", value = hashes },
     { name = "Installed Size", value = installedSize },
-    { name = "Download", value = deb },
+    { name = "Download", value = meta.general and url or deb },
     { name = "Depends", value = info.depends or "None" },
     { name = "Breaks", value = info.breaks or "None" },
     { name = "Replaces", value = info.replaces or "None" },
