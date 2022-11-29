@@ -153,6 +153,7 @@ local function handleCommands(message)
   local cmd = commands[command] or commands[aliases[command]]
 
   if not cmd then return end
+  if message.channel.id == general and cmd.restricted then return end
 
   if cmd.guildOnly and not message.guild then
     message:reply("This command can only be ran in a server.")
@@ -164,7 +165,11 @@ local function handleCommands(message)
     return true
   end
 
-  if message.channel.id == general and cmd.restricted then return end
+  local isAdmin = message.member and message.member:hasRole("641261997090144276")
+  if cmd.adminOnly and not isAdmin then
+    message:reply("This command can only be ran by Admins.")
+    return true
+  end
 
   local success, value = pcall(function ()
     return cmd.run(message, args, {
@@ -173,7 +178,8 @@ local function handleCommands(message)
       rawArgs = message.content:sub(#prefix + #command + 1),
       config = config,
       db = db,
-      general = message.channel.id == general
+      general = message.channel.id == general,
+      isAdmin = isAdmin
     })
   end)
 
