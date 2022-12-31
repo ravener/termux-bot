@@ -136,7 +136,7 @@ local function handlePoints(message)
       embed = {
         title = "Active Role Handout",
         color = 0x00FF00,
-        author = { name = message.author.tag, icon_url = message.author.getAvatarURL() },
+        author = { name = message.author.tag, icon_url = message.author:getAvatarURL() },
         description = string.format("Given the active role to **%s**", message.author.tag),
         footer = { text = string.format("User ID: %s", message.author.id) }
       }
