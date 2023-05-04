@@ -53,6 +53,8 @@ local function tldrCommand(msg, args, meta)
     return "Page not found."
   end
 
+  page.description = page.description:gsub("({{(.-)}})","<%2>")
+
   if meta.general then
     return string.format("%s (%s)\n\n%s", page.title, page.platform, page.description)
   else
