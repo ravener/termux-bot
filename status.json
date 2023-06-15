@@ -24,15 +24,11 @@
     "type": 0
   },
   {
-    "name": "rm -rf /",
-    "type": 0
-  },
-  {
     "name": "Emacs",
     "type": 0
   },
   { 
-    "name": "rm -rf $PREFIX",
+    "name": "sl^C^C^C^C^C",
     "type": 0
   },
   {
