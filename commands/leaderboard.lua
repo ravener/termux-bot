@@ -25,12 +25,12 @@ local function leaderboardCommand(message, args, meta)
   local leaderboard = {}
   local topIDs = slice(rows.id, ((page - 1) * 10) + 1, page * 10)
   local topPoints = slice(rows.points, ((page - 1) * 10) + 1, page * 10)
-  local name = user.discriminator ~= "0" and user.tag or user.username
   local aname = message.author.discriminator ~= "0" and message.author.tag or message.author.username
 
   for i, id in ipairs(topIDs) do
     local points = tonumber(topPoints[i])
     local user = message.client:getUser(id)
+    local name = user.discriminator ~= "0" and user.tag or user.username
     table.insert(leaderboard, string.format("- %s ❯ %s\n    => %s bit%s", tostring(((page - 1) * 10) + i):pad(2, "right", "0"), name, reformatInt(points), points > 1 and "s" or ""))
   end
 
