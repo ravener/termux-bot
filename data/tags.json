@@ -1,0 +1,350 @@
+[
+  { "name": "T4WMEME",
+    "aliases": [],
+    "content": ["https://i.imgur.com/sMpi5UI.png"]
+  },
+  { "name": "actions",
+    "aliases": [],
+    "content": [
+      "**Getting (Unstable!) Termux APKs from Github Actions** <:android:829651697688641565><:github:877835664710856724>",
+      "__Step 1:__ Inside the Github repo you want an APK of, click on `Actions` tab.",
+      "*(you need to be logged into Github to access it!)*",
+      "__Step 2:__ Choose a recent workflow run tagged __build__ , preferably on the `master` branch.",
+      "__Step 3:__ Scroll down to **Artifacts** and choose the APK file matching your phone's architecture.",
+      "*(if you don't know which one to pick, pick the universal version!)*"
+    ]
+  },
+  { "name": "ask",
+    "aliases": [],
+    "content": ["https://dontasktoask.com"]
+  },
+  { "name": "bash",
+    "aliases": [],
+    "content": [
+      "**Bash guides**",
+      "- For first-timers",
+      "<https://web.archive.org/web/20221013130555/https://linuxjourney.com/lesson/the-shell>",
+      "- Beginner tutorial",
+      "<https://tldp.org/LDP/Bash-Beginners-Guide/html/>",
+      "- Shell comparison",
+      "<https://hyperpolyglot.org/unix-shells>",
+      "- Cheatsheet",
+      "<https://devhints.io/bash>",
+      "- Shellcheck linter",
+      "<https://www.shellcheck.net/>",
+      "- Advanced scripts/tricks",
+      "<https://github.com/dylanaraps/pure-bash-bible>",
+      "- Complete Bash manual",
+      "<https://tldp.org/LDP/abs/html/index.html>",
+      "- Awesome Bash",
+      "<https://github.com/awesome-lists/awesome-bash>"
+    ]
+  },
+  { "name": "bridge",
+    "aliases": [],
+    "content": [
+      "**Bridge** <:termux_smile:789347239591804950> <-> 🌉 <-> :termuwux:   ",
+      "To not force people to use one specific chat platform, we connected <#641256914684084237> and <#847704138711171084> channels to relay messages into Matrix: <https://matrix.to/#/#Termux:matrix.org>. It works through webhooks that pass messages between Discord and bridged rooms on Matrix, allowing us to hold conversations across multiple messaging platforms.",
+      "More details here: <https://matrix.org/bridges/>"
+    ]
+  },
+  { "name": "contr",
+    "aliases": [],
+    "content": [
+      "**Contributing to Termux**",
+      "-How you can contribute to the Termux project:",
+      "<https://github.com/termux/termux-packages/blob/master/CONTRIBUTING.md>",
+      "-How to build packages:",
+      "<https://github.com/termux/termux-packages/wiki/Building-packages>",
+      "-Differences from Linux:",
+      "<https://wiki.termux.com/wiki/Differences_from_Linux>"
+    ]
+  },
+  { "name": "emacs4newcomers",
+    "aliases": [],
+    "content": [
+      "https://github.com/doomemacs/doomemacs",
+      "^ Best way to start with Emacs"
+    ]
+  },
+  { "name": "examples",
+    "aliases": [],
+    "content": [
+      "### What can I do with Termux?",
+      "Here's a __few__ examples of what you can do using Termux:",
+      "- convert or process audio/video: `sox,ffmpeg`",
+      "- code anything: `python`, `C`, `go`, `lua`, *and many more!*",
+      "- ^ using text-editors like `nano`, `emacs`, and `neovim`",
+      "- run a Discord bot: `discordia`",
+      "- host a personal website: `ngrok`, `caddy`",
+      "- enjoy fun screensavers : `cmatrix`, `nyancat`, `cbonsai`",
+      "- run an SSH client/server: `openssh`, `dropbear`, `ttyd`",
+      "- synchronize or back up your files: `rdiff`, `rclone`, `dufs`",
+      "- use one of thousands of apps from our repository",
+      "- compile your own using many common tools",
+      "- learn the basics of the Linux command line environment"
+    ]
+  },
+  { "name": "firstrun",
+    "aliases": [],
+    "content": [
+      "After installing Termux and opening it, you should do the following:",
+      "",
+      "**1.** `termux-change-repo` (to select a nearby mirror to get updates from):",
+      "- `SPACE` toggles highlighted options;",
+      "- `ENTER` moves to the next screen;",
+      "Choose the first/topmost option on each screen. _(If that one fails, try another.)_",
+      "**2.** `pkg update && pkg upgrade` (to update your package database, then upgrade all packages)",
+      "On each prompt, press `y` and `Enter` to install newest versions available",
+      "**3.** `exit` (to exit Termux, so you can restart it yourself, all updated!)",
+      "```"
+    ]
+  },
+  { "name": "goodpractices",
+    "aliases": [],
+    "content": [
+      "**Helpful reads**",
+      "- Don't ask to ask, just ask",
+      "<https://dontasktoask.com/>",
+      "- Please don’t just say “hello”",
+      "<https://no-hello.com/>",
+      "- Troubleshoot the problem yourself",
+      "<https://rubberduckdebugging.com/>"
+    ]
+  },
+  { "name": "h2t",
+    "aliases": [],
+    "content": [
+      "**How to Termux**",
+      "- Learn your way around the terminal",
+      "<https://linuxjourney.com/lesson/the-shell>",
+      "- Getting started on Termux",
+      "<https://wiki.termux.com/wiki/Getting_started>",
+      "- Differences from a usual Linux distribution ",
+      "<https://wiki.termux.com/wiki/Differences_from_Linux>",
+      "- Basics of Bash (the default shell)",
+      "<http://mywiki.wooledge.org/BashGuide/CommandsAndArguments>",
+      "- Bash cheatsheet",
+      "<https://devhints.io/bash>"
+    ]
+  },
+  { "name": "hacking",
+    "aliases": [],
+    "content": [
+      "Information about Termux hacking:",
+      "👉 https://wiki.termux.com/wiki/hacking"
+    ]
+  },
+  { "name": "iphone",
+    "aliases": [],
+    "content": [
+      "Termux is for Android only, but there are a few alternatives on iOS:",
+      "iSH: <https://apps.apple.com/us/app/ish-shell/id1436902243>",
+      "A-Shell: <https://holzschu.github.io/a-Shell_iOS>"
+    ]
+  },
+  { "name": "legacy",
+    "aliases": [],
+    "content": [
+      "**Legacy Termux Versions**",
+      "App itself, and sources:",
+      "<https://github.com/termux/termux-app/wiki/Termux-on-android-5-or-6>",
+      "Archive of packages:",
+      "<https://archive.org/details/termux-repositories-legacy>"
+    ]
+  },
+  { "name": "motd",
+    "aliases": [],
+    "content": [
+      "To hide the MOTD that shows when you start up Termux:",
+      "```bash",
+      "cd",
+      "echo > .hushlogin",
+      "```",
+      "If you want to see it show up again:",
+      "```bash",
+      "cd",
+      "rm .hushlogin",
+      "```",
+      "**NOTE:** These will not work if used inside a proot / chroot / qemu environment."
+    ]
+  },
+  { "name": "nerdsnipe",
+    "aliases": [],
+    "content": ["https://imgs.xkcd.com/comics/nerd_sniping.png"]
+  },
+  { "name": "nohello",
+    "aliases": ["nohi"],
+    "content": ["https://nohello.net"]
+  },
+  { "name": "notworking",
+    "aliases": [],
+    "content": [
+      "Avoid the phrase \"not working\". It doesn't tell us anything about your problem and only wastes everyone's time. There are many, many types of \"it doesn't work\". Does it not run? Does it throw an error? Does it freeze? Does it crash your machine? Does it not do anything? Does it do something different from what you want? If you want us to help you, remember to *tell us **what you want it to do** and **what it does instead,*** as well as any other relevant information. An MCVE (<https://stackoverflow.com/help/minimal-reproducible-example>) can be very helpful as well."
+    ]
+  },
+  { "name": "npm",
+    "aliases": [],
+    "content": [
+      "**Installing npm packages in sdcard**",
+      "Some Node.js packages comes with executable commands which cause npm to symlink their executables to the top level of your `node_modules`, e.g via the `npx` command.",
+      "",
+      "On Android, this will fail if you are using your internal storage or SD card instead of Termux's private app directory.",
+      "",
+      "The easiest solution is to use Termux's home directory and create your projects there. The symlinks will succeed and everything will work normally. However, you will now be required to mostly edit your project in Termux, using terminal-based text editors like `nano`, `vim`, etc.",
+      "",
+      "If you prefer to have your projects available in the SD card for easier access by external text editors so you can code outside of Termux, you can ask npm to just not symlink those executables using the command `npm install --no-bin-links <package>`. You won't be able to easily access the installed executables or the `npx` command, but you will be able to `require` the module in your code."
+    ]
+  },
+  { "name": "phantom",
+    "aliases": ["A12"],
+    "content": [
+      "**Phantom Process Killing** 📱   🔫 👻 ",
+      "Termux being randomly killed and displaying `[Process completed (signal 9) - press Enter]` is a known problem. It is caused by an Android battery optimization called the phantom process killer.",
+      "- More information about the issue:",
+      "<https://github.com/termux/termux-app/issues/2366>",
+      "- Potential solutions",
+      "<https://github.com/agnostic-apollo/Android-Docs/blob/master/en/docs/apps/processes/phantom-cached-and-empty-processes.md#commands-to-disable-phantom-process-killing-and-tldr> (link above takes you to end chapter; read the full thread for an in-depth description of what's happening)"
+    ]
+  },
+  { "name": "placeholder",
+    "aliases": [],
+    "content": [
+      "In computer programming, a placeholder is a character, word, or string of characters that temporarily takes the place of the final data.",
+      "Source: <https://www.computerhope.com/jargon/p/plactext.htm>"
+    ]
+  },
+  { "name": "playstore",
+    "aliases": ["p"],
+    "content": [
+      "**Termux on Google Play Store is OUTDATED ** <:playstore:1020972389628121088>🪦",
+      "Termux and its plugins are no longer updated on the Google Play Store. This is due to API requirements that introduce new restrictions, which break Termux's basic functionality.",
+      "Please switch to the <:fdroid:1020972731665235998> F-Droid version!",
+      "Direct link: <https://f-droid.org/en/packages/com.termux>",
+      "**Before** you install it, You **must** __fully uninstall__ current Termux and all plugins. If you don't, you will get a cryptic `app not installed` error!",
+      "(that means uninstalling the main app, as well as Termux:API, :Styling, :Widget, :Task, :Float, :Boot)",
+      "If you need help with backing up your files:",
+      "<https://wiki.termux.com/wiki/Backing_up_Termux>"
+    ]
+  },
+  { "name": "problemsolving",
+    "aliases": [],
+    "content": [
+      "**Ultimate smart problem-solving**",
+      "> \"Everybody should learn to program a computer,",
+      "> because it teaches you how to think\"",
+      "- Steve Jobs, 1995",
+      "",
+      "Does Steve Jobs knew how to code?",
+      "Steve Wozniak, Co-founder of Apple answers:",
+      "> \"Steve didn't ever code.",
+      "> He wasn't an engineer and he didn't do any original design,",
+      "> but he was technical enough to alter and change and add to other designs\"",
+      "",
+      "Important reads:",
+      "- <https://gamedevunboxed.com/tips-for-solving-programming-problems/>",
+      "- <https://norvig.com/21-days.html>",
+      "- <https://interestingengineering.com/how-to-think-like-a-programmer-when-problem-solving>",
+      "- Troubleshoot the problem yourself:",
+      "https://rubberduckdebugging.com/",
+      "- How to ask questions of hackers in a way that makes it most likely that you'll get a useful answer.",
+      "<http://www.catb.org/~esr/faqs/smart-questions.html>"
+    ]
+  },
+  { "name": "prootvschroot",
+    "aliases": ["pvc"],
+    "content": ["https://media.discordapp.net/attachments/955349075258146876/985946962585088100/unknown.png"]
+  },
+  { "name": "r",
+    "aliases": [],
+    "content": [
+      "**Problems with updating packages or installing a package?** ",
+      "Try:",
+      "- `pkg update` *or* `apt update` to fix problems when installing a package",
+      "- `termux-change-repo` when you get mirror problems like",
+      "  [repo failed to fetch] or [repo is not signed];",
+      "-Make sure you are __not__ using Termux from the Google Play Store;"
+    ]
+  },
+  { "name": "rd",
+    "aliases": [],
+    "content": [
+      "**How to learn to solve problem yourself:**",
+      "<https://rubberduckdebugging.com> 🦆",
+      "Following ^this^ should enable you to troubleshoot most of your problems!"
+    ]
+  },
+  { "name": "rice",
+    "aliases": [],
+    "content": [
+      "**Customizing Termux**",
+      "To use color schemes or fonts other than the default, get Termux:Styling from F-Droid (or GitHub, if you got your main Termux app from GitHub).",
+      "",
+      "- When inside Termux, long press anywhere on the terminal.",
+      "- Select `More...` in the resulting dialog.",
+      "- Select `Style` in the next dialog.",
+      "- Click either `CHOOSE COLOR` or `CHOOSE FONT` depending on what you want to customize.",
+      "",
+      "Those instructions will show some pre-included options. If you want custom options: ",
+      "- Inside Termux, cd to .termux",
+      "- Put your favorite font as font.ttf (must be a monospace font)",
+      "- Modify colors.properties to use whatever color scheme you want"
+    ]
+  },
+  { "name": "saf",
+    "aliases": [],
+    "content": [
+      "**Accessing the Termux home directory from a file manager**",
+      "Termux allows accessing its own home directory by using the Storage Access Framework, which allows applications to access files via a global file picker. If your file manager looks something like the first picture, then you don't need extra configuration: you can just click on Termux and access the home directory. If your file manager doesn't look like the first picture, you might need to install Material Files (<https://f-droid.org/en/packages/me.zhanghai.android.files>) and follow the steps on the second image.",
+      "",
+      "https://media.discordapp.net/attachments/954279764187816016/1010039379055607878/image0.png",
+      "https://media.discordapp.net/attachments/954279764187816016/1010041858333868052/IMG_20220819_112524.png"
+    ]
+  },
+  { "name": "termuxpc",
+    "aliases": ["Termux4PC", "T4W"],
+    "content": [
+      "**Termux on PC**",
+      "",
+      "There is no such thing as Termux on PC. However, there are ways to use normal Linux in your computer, so that you can get a Termux-like experience (without the Termux headache).",
+      "",
+      "- Using virtualization software",
+      "Software such as QEMU (FOSS), VMware Workstation (paid), Parallels (paid, for macOS), VirtualBox (FOSS), or Hyper-V (included in professional and enterprise versions of Windows, but needs to be enabled) allows you to virtualize Windows, Linux, or another OS within Windows, macOS, and Linux. For beginners, we recommend VirtualBox, because it's easier to use and is completely FOSS.",
+      "",
+      "- Dual-booting or installing Linux on a bare metal host",
+      "If you can't use virtualization, you can directly install Linux on your computer from removable media, like a USB flash drive. You can either dual boot to have Linux alongside Windows, or replace your installation entirely with Linux.",
+      "",
+      "- Windows Subsystem for Linux",
+      "WSL is a Windows component that allows you to run Linux distros within Windows. The newest version of WSL, WSL2, uses the Hyper-V technology mentioned earlier to get a near-native Linux experience. WSL1 is also available, which is a system calls translation layer instead of a VM.",
+      "<https://learn.microsoft.com/en-us/windows/wsl/install>",
+      "",
+      "- Linux (beta)/Crostini",
+      "Although ChromeOS is Linux-based, you can't easily get a full Linux experience. Some Linux programs like Visual Studio Code and Android Studio are available on ChromeOS, but you can enable a Linux VM or install Crostini if your Chromebook supports them."
+    ]
+  },
+  { "name": "try",
+    "aliases": [],
+    "content": ["https://tryitands.ee/"]
+  },
+  { "name": "vim4newcomers",
+    "aliases": [],
+    "content": [
+      "The best way to get started with vim is using `vimtutor`, which is pre-included with vim / neovim!",
+      "If you're looking for some pre-configured framework with sane defaults and plugins, [LunarVim](https://github.com/LunarVim/LunarVim) might be for you!"
+    ]
+  },
+  { "name": "virtualization",
+    "aliases": [],
+    "content": [
+      "**Virtualization**",
+      "- QEMU",
+      "Can run most OSes by emulating hardware. Usually slow, partly because very few Android devices have hardwre virtualization extensions.",
+      "- PRoot + QEMU",
+      "Enabling user mode emulation with PRoot's `-q` parameter uses QEMU to emulate an x86 rootfs on ARM. It's usably fast for simple programs. No peripheral emulation is performed, just CPU architecture emulation.",
+      "- PRoot + Box86/64",
+      "Best for running Windows apps. You can use this to run a binary compiled for x86/x64 with decent performance. Box86 and Box64 can only run on CPUs with matching address sizes - you can't run box86 on a 64-bit CPU or box64 on a 32-bit one. Instructions on how to use and compile Box86/64 are in their repos' READMES.",
+      "",
+      "For running proot-distro distributions with foreign architectures, see <https://github.com/termux/proot-distro#adding-distribution> for info on how to setup distribution aliases."
+    ]
+  }
+]
