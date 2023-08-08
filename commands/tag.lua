@@ -1,0 +1,47 @@
+local fs = require('fs')
+local json = require('json')
+local tags = json.decode(fs.readFileSync('data/tags.json'))
+
+local function tagCommand(message, args, meta)
+  if #args < 1 then
+    local names = {}
+    for i, v in ipairs(tags) do
+      table.insert(names, v.name)
+    end
+
+    return "List of available tags:\n\n" + table.concat(names, ", ")
+  end
+
+  local name = args[1]:lower()
+  local tag
+  
+  for i, v in ipairs(tags) do
+    if v.name == name then
+      tag = v
+    else
+      for ii, vv in ipairs(v.aliases) do
+        if vv == name then
+          tag = v
+        end
+      end
+    end
+  end
+
+  if not tag then
+    return "Tag not found."
+  end
+
+  return {
+    embed = {
+      color = 0xFFAB87,
+      title = tag.name,
+      description = tag.content
+    }
+  }
+end
+
+return {
+  run = tagCommand,
+  aliases = {"t"},
+  description = "Display a tag."
+}
