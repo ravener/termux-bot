@@ -9,7 +9,7 @@ local function tagCommand(message, args, meta)
       table.insert(names, v.name)
     end
 
-    return "List of available tags:\n\n" + table.concat(names, ", ")
+    return "List of available tags:\n\n" .. table.concat(names, ", ")
   end
 
   local name = args[1]:lower()
