@@ -6,12 +6,12 @@
   { "name": "actions",
     "aliases": [],
     "content": [
-      "**Getting (Unstable!) Termux APKs from Github Actions** <:android:829651697688641565><:github:877835664710856724>  ",
-      "__Step 1:__ Inside Github repo you want APK of, click on `Actions` tab;",
+      "**Getting (Unstable!) Termux APKs from Github Actions** <:android:829651697688641565><:github:877835664710856724>",
+      "__Step 1:__ Inside the Github repo you want an APK of, click on `Actions` tab.",
       "*(you need to be logged into Github to access it!)*",
-      "__Step 2:__ Choose recent \"workflow run\" tagged __build__ , preferably on `master` branch;",
-      "__Step 3:__ Scroll down to **Artifacts**, and choose APK file most suitable for your phone*",
-      "*(if you don't know which one to pick, take universal version!)*"
+      "__Step 2:__ Choose a recent workflow run tagged __build__ , preferably on the `master` branch.",
+      "__Step 3:__ Scroll down to **Artifacts** and choose the APK file matching your phone's architecture.",
+      "*(if you don't know which one to pick, pick the universal version!)*"
     ]
   },
   { "name": "ask",
@@ -44,7 +44,7 @@
     "aliases": [],
     "content": [
       "**Bridge** <:termux_smile:789347239591804950> <-> 🌉 <-> :termuwux:   ",
-      "To not enforce people to use only one specific chat platform, we connected <#641256914684084237> and <#847704138711171084> channels to relay messages into Matrix: <https://matrix.to/#/#Termux:matrix.org>. It works through webhooks that passes your message to bridged rooms on Matrix,  allowing to hold conversation across multiple messaging software/platforms with other people.",
+      "To not force people to use one specific chat platform, we connected <#641256914684084237> and <#847704138711171084> channels to relay messages into Matrix: <https://matrix.to/#/#Termux:matrix.org>. It works through webhooks that pass messages between Discord and bridged rooms on Matrix, allowing us to hold conversations across multiple messaging platforms.",
       "More details here: <https://matrix.org/bridges/>"
     ]
   },
@@ -52,9 +52,9 @@
     "aliases": [],
     "content": [
       "**Contributing to Termux**",
-      "-How you can contribute to Termux project:",
+      "-How you can contribute to the Termux project:",
       "<https://github.com/termux/termux-packages/blob/master/CONTRIBUTING.md>",
-      "-How to build package:",
+      "-How to build packages:",
       "<https://github.com/termux/termux-packages/wiki/Building-packages>",
       "-Differences from Linux:",
       "<https://wiki.termux.com/wiki/Differences_from_Linux>"
@@ -71,36 +71,32 @@
     "aliases": [],
     "content": [
       "### What can I do with Termux?",
-      "Here's __few__ examples of what you can do using Termux,",
-      "  provided with __few__ example apps to do such task:",
+      "Here's a __few__ examples of what you can do using Termux:",
       "- convert or process audio/video: `sox,ffmpeg`",
-      "- code anything: `python,c,go,lua`, *and many more!*",
-      "- ^ using text-editors like `nano,emacs,neovim`",
+      "- code anything: `python`, `C`, `go`, `lua`, *and many more!*",
+      "- ^ using text-editors like `nano`, `emacs`, and `neovim`",
       "- run a Discord bot: `discordia`",
-      "- host personal website: `ngrok,caddy`",
-      "- enjoy fun screensavers : `cmatrix,nyancat,cbonsai`",
-      "- run an SSH client/server: `openssh,ttyd,dropbear`",
-      "- synchronize back up your files: `rdiff,rclone,dufs`",
-      "- use one of over 1000s apps from our repository",
-      "- compile your own using one of many build tools",
-      "- Learn the basics of the Linux command line environment"
+      "- host a personal website: `ngrok`, `caddy`",
+      "- enjoy fun screensavers : `cmatrix`, `nyancat`, `cbonsai`",
+      "- run an SSH client/server: `openssh`, `dropbear`, `ttyd`",
+      "- synchronize or back up your files: `rdiff`, `rclone`, `dufs`",
+      "- use one of thousands of apps from our repository",
+      "- compile your own using many common tools",
+      "- learn the basics of the Linux command line environment"
     ]
   },
   { "name": "firstrun",
     "aliases": [],
     "content": [
-      "After installing Termux and opening it, you should do the following to make sure you have it up-to-date:",
+      "After installing Termux and opening it, you should do the following:",
       "",
-      "**1.** `termux-change-repo` = Lets you select where to get updates from:",
+      "**1.** `termux-change-repo` (to select a nearby mirror to get updates from):",
       "- `SPACE` toggles highlighted options;",
       "- `ENTER` moves to the next screen;",
-      "Choose 1st topmost option on each screen _(if that one fails, try different combination)_",
-      "**2.** `pkg update && pkg upgrade` = First it updates our package database to see what can be upgraded, and then we actually upgrade all packages.",
-      "On each prompt press `y` and `Enter` to install newest version available",
-      "**3.** `exit` = This exits Termux, so you can restart it yourself - Termux will start up all ready to use, all updated!",
-      "_TL:DR: everything in one command with autoaccepting each update:_",
-      "```",
-      "termux-change-repo ; yes | pkg update && yes | pkg upgrade ; exit",
+      "Choose the first/topmost option on each screen. _(If that one fails, try another.)_",
+      "**2.** `pkg update && pkg upgrade` (to update your package database, then upgrade all packages)",
+      "On each prompt, press `y` and `Enter` to install newest versions available",
+      "**3.** `exit` (to exit Termux, so you can restart it yourself, all updated!)",
       "```"
     ]
   },
@@ -120,7 +116,7 @@
     "aliases": [],
     "content": [
       "**How to Termux**",
-      "- Learn your way around terminal",
+      "- Learn your way around the terminal",
       "<https://linuxjourney.com/lesson/the-shell>",
       "- Getting started on Termux",
       "<https://wiki.termux.com/wiki/Getting_started>",
@@ -142,7 +138,7 @@
   { "name": "iphone",
     "aliases": [],
     "content": [
-      "Termux is for Android only, but there few alternatives on iOS platform:",
+      "Termux is for Android only, but there are a few alternatives on iOS:",
       "iSH: <https://apps.apple.com/us/app/ish-shell/id1436902243>",
       "A-Shell: <https://holzschu.github.io/a-Shell_iOS>"
     ]
@@ -165,12 +161,12 @@
       "cd",
       "echo > .hushlogin",
       "```",
-      "If you want to start seeing it show up again:",
+      "If you want to see it show up again:",
       "```bash",
       "cd",
       "rm .hushlogin",
       "```",
-      "**NOTE:** These MUST NOT be used while inside a proot / qemu / etc. environment as they won't work if you do."
+      "**NOTE:** These will not work if used inside a proot / chroot / qemu environment."
     ]
   },
   { "name": "nerdsnipe",
@@ -191,24 +187,24 @@
     "aliases": [],
     "content": [
       "**Installing npm packages in sdcard**",
-      "Some Node.js packages also comes with executable commands which causes npm to symlink those executables to the top-level of your `node_modules` for easy access, e.g via the `npx` command.",
+      "Some Node.js packages comes with executable commands which cause npm to symlink their executables to the top level of your `node_modules`, e.g via the `npx` command.",
       "",
-      "The problem with this is that on Termux this will fail if you are using your internal sdcard as opposed to Termux's private app directory.",
+      "On Android, this will fail if you are using your internal storage or SD card instead of Termux's private app directory.",
       "",
-      "The easiest solution is to use Termux's home directory and create your projects there, the symlinks will succeed and everything will be normal. However you will now be required to mostly edit your project via Termux, this is fine if you are used to editors like `nano`, `vim`, etc.",
+      "The easiest solution is to use Termux's home directory and create your projects there. The symlinks will succeed and everything will work normally. However, you will now be required to mostly edit your project in Termux, using terminal-based text editors like `nano`, `vim`, etc.",
       "",
-      "If you prefer to have your projects available in the sdcard for easier access by external text editors, e.g to code outside of Termux. You can ask npm to just not symlink those executables using the command `npm install --no-bin-links <package>` you won't be able to easily access the installed executables or the `npx` command but for most users it is enough as all they need is to require the module for use in their code."
+      "If you prefer to have your projects available in the SD card for easier access by external text editors so you can code outside of Termux, you can ask npm to just not symlink those executables using the command `npm install --no-bin-links <package>`. You won't be able to easily access the installed executables or the `npx` command, but you will be able to `require` the module in your code."
     ]
   },
   { "name": "phantom",
     "aliases": ["A12"],
     "content": [
       "**Phantom Process Killing** 📱   🔫 👻 ",
-      "Termux being randomly killed is a known problem because of __Android 12__ CPU optimisation mechanism, displayed as `[Process completed (signal 9) - press Enter]` error",
+      "Termux being randomly killed and displaying `[Process completed (signal 9) - press Enter]` is a known problem. It is caused by an Android battery optimization called the phantom process killer.",
       "- More information about the issue:",
       "<https://github.com/termux/termux-app/issues/2366>",
-      "- Potential solutions to fix that",
-      "<https://github.com/agnostic-apollo/Android-Docs/blob/master/en/docs/apps/processes/phantom-cached-and-empty-processes.md#commands-to-disable-phantom-process-killing-and-tldr> (link above takes you to end chapter, the whole thing has in-depth description of what's happening)"
+      "- Potential solutions",
+      "<https://github.com/agnostic-apollo/Android-Docs/blob/master/en/docs/apps/processes/phantom-cached-and-empty-processes.md#commands-to-disable-phantom-process-killing-and-tldr> (link above takes you to end chapter; read the full thread for an in-depth description of what's happening)"
     ]
   },
   { "name": "placeholder",
@@ -222,12 +218,12 @@
     "aliases": ["p"],
     "content": [
       "**Termux on Google Play Store is OUTDATED ** <:playstore:1020972389628121088>🪦",
-      "Termux & plugins are no longer updated on Google Play Store due to current Google Play Store target API to be ≥28, which causes issues on Android ≥10 and have been deprecated.",
-      "Please switch to <:fdroid:1020972731665235998> F-Droid version for stable release!",
+      "Termux and its plugins are no longer updated on the Google Play Store. This is due to API requirements that introduce new restrictions, which break Termux's basic functionality.",
+      "Please switch to the <:fdroid:1020972731665235998> F-Droid version!",
       "Direct link: <https://f-droid.org/en/packages/com.termux>",
-      "**Before** you install it, You **must** __fully uninstall__ current Termux & all plugins, otherwise you will get `app not installed` error!",
-      "(So get rid of main app, Termux:API,Styling,Widget,Task,Float,Boot)",
-      "If you need help with backing up your current files:",
+      "**Before** you install it, You **must** __fully uninstall__ current Termux and all plugins. If you don't, you will get a cryptic `app not installed` error!",
+      "(that means uninstalling the main app, as well as Termux:API, :Styling, :Widget, :Task, :Float, :Boot)",
+      "If you need help with backing up your files:",
       "<https://wiki.termux.com/wiki/Backing_up_Termux>"
     ]
   },
@@ -262,12 +258,12 @@
   { "name": "r",
     "aliases": [],
     "content": [
-      "**Problems with updating repository / installing a package?** ",
+      "**Problems with updating packages or installing a package?** ",
       "Try:",
-      "- `pkg update` *or* `apt update` to fix problem when installing a package;",
+      "- `pkg update` *or* `apt update` to fix problems when installing a package",
       "- `termux-change-repo` when you get mirror problems like",
       "  [repo failed to fetch] or [repo is not signed];",
-      "-Make sure you are __not__ using Termux from Google PlayStore;"
+      "-Make sure you are __not__ using Termux from the Google Play Store;"
     ]
   },
   { "name": "rd",
@@ -282,24 +278,24 @@
     "aliases": [],
     "content": [
       "**Customizing Termux**",
-      "To use other color scheme or font other than the default, get Termux:Styling from F-Droid (or GitHub if you got your Termux from GitHub).",
+      "To use color schemes or fonts other than the default, get Termux:Styling from F-Droid (or GitHub, if you got your main Termux app from GitHub).",
       "",
       "- When inside Termux, long press anywhere on the terminal.",
       "- Select `More...` in the resulting dialog.",
       "- Select `Style` in the next dialog.",
       "- Click either `CHOOSE COLOR` or `CHOOSE FONT` depending on what you want to customize.",
       "",
-      "Those instructions will show some pre-included options, if you want custom options: ",
-      "- When inside Termux, cd to .termux",
+      "Those instructions will show some pre-included options. If you want custom options: ",
+      "- Inside Termux, cd to .termux",
       "- Put your favorite font as font.ttf (must be a monospace font)",
-      "- Modify colors.properties to use whatever colorscheme you want"
+      "- Modify colors.properties to use whatever color scheme you want"
     ]
   },
   { "name": "saf",
     "aliases": [],
     "content": [
       "**Accessing the Termux home directory from a file manager**",
-      "Termux allows accessing it's own home directory by using SAF, which allows applications from accessing files with a global file picker. If your file manager looks something like the first picture, then you don't need extra configurations as you can just click on Termux and access the home directory. If your file manager doesn't look like the first picture, you might need to install Material Files (<https://f-droid.org/en/packages/me.zhanghai.android.files>) and follow the steps on the second image.",
+      "Termux allows accessing its own home directory by using the Storage Access Framework, which allows applications to access files via a global file picker. If your file manager looks something like the first picture, then you don't need extra configuration: you can just click on Termux and access the home directory. If your file manager doesn't look like the first picture, you might need to install Material Files (<https://f-droid.org/en/packages/me.zhanghai.android.files>) and follow the steps on the second image.",
       "",
       "https://media.discordapp.net/attachments/954279764187816016/1010039379055607878/image0.png",
       "https://media.discordapp.net/attachments/954279764187816016/1010041858333868052/IMG_20220819_112524.png"
@@ -310,20 +306,20 @@
     "content": [
       "**Termux on PC**",
       "",
-      "There is no such thing as Termux on PC, however there are ways to use normal Linux in your computer, so that you can get a Termux-like experience (without the Termux headache).",
+      "There is no such thing as Termux on PC. However, there are ways to use normal Linux in your computer, so that you can get a Termux-like experience (without the Termux headache).",
       "",
-      "- Using a virtualization software",
-      "Softwares such as QEMU (FOSS), VMware Workstation (paid), Parallels (paid, for macOS), VirtualBox (FOSS), or Hyper-V (included in professional and enterprise versions of Windows but needs to be enabled) allows you to virtualize Windows, Linux, or literally any OS within Windows, macOS, and Linux. For beginners, it's recommended to use VirtualBox because it's easier to use and is completely FOSS.",
+      "- Using virtualization software",
+      "Software such as QEMU (FOSS), VMware Workstation (paid), Parallels (paid, for macOS), VirtualBox (FOSS), or Hyper-V (included in professional and enterprise versions of Windows, but needs to be enabled) allows you to virtualize Windows, Linux, or another OS within Windows, macOS, and Linux. For beginners, we recommend VirtualBox, because it's easier to use and is completely FOSS.",
       "",
       "- Dual-booting or installing Linux on a bare metal host",
-      "If virtualization is not eligible for your computer, you can instead directly install Linux on your computer from a removable media like a USB flash drive. You can either dual boot to have two OSes alongside Windows or replace your installation entirely with Linux.",
+      "If you can't use virtualization, you can directly install Linux on your computer from removable media, like a USB flash drive. You can either dual boot to have Linux alongside Windows, or replace your installation entirely with Linux.",
       "",
       "- Windows Subsystem for Linux",
-      "WSL is a Linux to Windows compatibility layer built-in to Windows that allows you to run Linux distros within Windows. The newest version of WSL which is WSL2 uses the Hyper-V technology mentioned earlier to get a near-native Linux experience within Windows. WSL1 is also available if virtualization isn't eligible which translates Linux system calls to NT-equivalent.",
+      "WSL is a Windows component that allows you to run Linux distros within Windows. The newest version of WSL, WSL2, uses the Hyper-V technology mentioned earlier to get a near-native Linux experience. WSL1 is also available, which is a system calls translation layer instead of a VM.",
       "<https://learn.microsoft.com/en-us/windows/wsl/install>",
       "",
       "- Linux (beta)/Crostini",
-      "Although ChromeOS is Linux based, you can't easily get a full Linux experience. Some Linux programs like Visual Studio Code and Android Studio are available on ChromeOS but if you really want to get a full Linux experience, you can enable Linux (beta) or install Crostini to get a full Linux experience on ChromeOS if your Chromebook is eligible."
+      "Although ChromeOS is Linux-based, you can't easily get a full Linux experience. Some Linux programs like Visual Studio Code and Android Studio are available on ChromeOS, but you can enable a Linux VM or install Crostini if your Chromebook supports them."
     ]
   },
   { "name": "try",
@@ -333,7 +329,7 @@
   { "name": "vim4newcomers",
     "aliases": [],
     "content": [
-      "The best way to try and get started with vim is using `vimtutor`, pre-included with vim / neovim!",
+      "The best way to get started with vim is using `vimtutor`, which is pre-included with vim / neovim!",
       "If you're looking for some pre-configured framework with sane defaults and plugins, [LunarVim](https://github.com/LunarVim/LunarVim) might be for you!"
     ]
   },
@@ -342,13 +338,13 @@
     "content": [
       "**Virtualization**",
       "- QEMU",
-      "Can run most OSes by emulating hardware (usually slow, but if your device is fast enough, it should run pretty fast, if your device is rooted and allows for hardware virtualization, you can use KVM to make ARM virtualization faster)",
+      "Can run most OSes by emulating hardware. Usually slow, partly because very few Android devices have hardwre virtualization extensions.",
       "- PRoot + QEMU",
-      "User mode emulation using PRoot's `-q` parameter with QEMU to emulate x86 rootfs on ARM but quite fast for simple programs. No init, hardware, disk, RAM, or PC peripheral emulation is involved, just CPU architecture. achieved using proot-distro while maintaining fair performance.",
+      "Enabling user mode emulation with PRoot's `-q` parameter uses QEMU to emulate an x86 rootfs on ARM. It's usably fast for simple programs. No peripheral emulation is performed, just CPU architecture emulation.",
       "- PRoot + Box86/64",
-      "Best for running Windows apps. although you can use this to run a binary compiled with Intel x86(-64) architecture while maintaining good performance. Box86/64 is bit dependent, so you can't run Box86 if you have a 64-bit device, and vice versa. Instructions on how to use & compile Box86/64 is in the repo's readme.",
+      "Best for running Windows apps. You can use this to run a binary compiled for x86/x64 with decent performance. Box86 and Box64 can only run on CPUs with matching address sizes - you can't run box86 on a 64-bit CPU or box64 on a 32-bit one. Instructions on how to use and compile Box86/64 are in their repos' READMES.",
       "",
-      "For running proot-distro distributions in different architecture. please see <https://github.com/termux/proot-distro#adding-distribution> on how you can setup distribution aliases in different architecture, you will need to copy existing distribution plugins with a modified one along with the new plugin script name as part of your distribution installation alias."
+      "For running proot-distro distributions with foreign architectures, see <https://github.com/termux/proot-distro#adding-distribution> for info on how to setup distribution aliases."
     ]
   }
 ]
