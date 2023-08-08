@@ -35,7 +35,7 @@ local function tagCommand(message, args, meta)
     embed = {
       color = 0xFFAB87,
       title = tag.name,
-      description = tag.content
+      description = table.concat(tag.content, '\n')
     }
   }
 end
