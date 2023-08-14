@@ -97,7 +97,6 @@
       "**2.** `pkg update && pkg upgrade` (to update your package database, then upgrade all packages)",
       "On each prompt, press `y` and `Enter` to install newest versions available",
       "**3.** `exit` (to exit Termux, so you can restart it yourself, all updated!)",
-      "```"
     ]
   },
   { "name": "goodpractices",
