@@ -41,7 +41,7 @@
     ]
   },
   { "name": "bridge",
-    "aliases": [],
+    "aliases": ["matrix"],
     "content": [
       "**Bridge** <:termux_smile:789347239591804950> <-> 🌉 <-> :termuwux:   ",
       "To not force people to use one specific chat platform, we connected <#641256914684084237> and <#847704138711171084> channels to relay messages into Matrix: <https://matrix.to/#/#Termux:matrix.org>. It works through webhooks that pass messages between Discord and bridged rooms on Matrix, allowing us to hold conversations across multiple messaging platforms.",
