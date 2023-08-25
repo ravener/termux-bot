@@ -31,16 +31,11 @@ local function tagCommand(message, args, meta)
     return "Tag not found."
   end
 
-  return {
-    embed = {
-      color = 0xFFAB87,
-      description = table.concat(tag.content, '\n')
-    }
-  }
+  return table.concat(tag.content, '\n')
 end
 
 return {
   run = tagCommand,
-  aliases = {"t"},
+  aliases = {"t", "tags"},
   description = "Display a tag."
 }
