@@ -64,11 +64,11 @@ CREATE TABLE IF NOT EXISTS "members" (
 local stmt = db:prepare("INSERT INTO members (id, points) VALUES(?, ?) ON CONFLICT DO UPDATE SET points = points + ? RETURNING *")
 
 client:on("ready", function()
-  client:setGame(status[math.random(#status)])
+  client:setActivity(status[math.random(#status)])
 
   -- Set a random status every minute.
   timer.setInterval(60 * 1000, function ()
-    coroutine.wrap(client.setGame)(client, status[math.random(#status)])
+    coroutine.wrap(client.setActivity)(client, status[math.random(#status)])
   end)
 
   local channel = client:getChannel("898421586758107206")
@@ -109,7 +109,7 @@ local function handlePoints(message)
   if #message.content < 5 then return end
   -- If user is on a timeout, it doesn't count.
   if timeouts[message.author.id] then return end
-  
+
   -- Ignore bot commands.
   for i, v in pairs({ "!", "?", "/", "n!", "./" }) do
     if message.content:startswith(v) then return end
