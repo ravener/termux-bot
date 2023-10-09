@@ -37,7 +37,7 @@ local function leaderboardCommand(message, args, meta)
   local pos = search(rows.id, message.author.id)
   local posTxt = pos == nil and "??" or tostring(pos):pad(2, "right", "0")
   local points = tonumber(rows.points[pos])
-  table.insert(leaderboard, string.format("\n+ [%s] ❯ %s\n    => %s bit%s", posTxt, aname, reformatInt(points), points > 1 and "s" or ""))
+  table.insert(leaderboard, string.format("\n+ [%s] ❯ %s\n    => %s bit%s", posTxt, aname, reformatInt(points), (points or 0) > 1 and "s" or ""))
   return string.format("Leaderboard (Page **%d** out of **%d**)\n```\n%s\n```", page, totalPages, table.concat(leaderboard, "\n"))
 end
 
