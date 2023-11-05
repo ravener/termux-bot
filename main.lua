@@ -190,14 +190,15 @@ local function handleCommands(message)
 
   local content
   local reply, err
+  local ref = message.referencedMessage or message
 
   if type(value) == "string" and #value > 0 then
     content = {
       content = value,
-      reference = { message = message }
+      reference = { message = message, mention = ref ~= message }
     }
   elseif type(value) == "table" then
-    value.reference = { message = message }
+    value.reference = { message = message, mention = ref ~= message }
     content = value
   end
 
