@@ -195,10 +195,10 @@ local function handleCommands(message)
   if type(value) == "string" and #value > 0 then
     content = {
       content = value,
-      reference = { message = message, mention = ref ~= message }
+      reference = { message = ref, mention = ref ~= message }
     }
   elseif type(value) == "table" then
-    value.reference = { message = message, mention = ref ~= message }
+    value.reference = { message = ref, mention = ref ~= message }
     content = value
   end
 
