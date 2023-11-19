@@ -140,7 +140,7 @@
       "Termux is for Android only, but there are a few alternatives on iOS:",
       "iSH: <https://apps.apple.com/us/app/ish-shell/id1436902243>",
       "A-Shell: <https://holzschu.github.io/a-Shell_iOS>",
-      "\n**Disclaimer: Termux is not associated with any apps above!**"
+      "\n**Disclaimer: Termux is not associated with any of the apps above!**"
     ]
   },
   { "name": "legacy",
