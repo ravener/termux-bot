@@ -44,7 +44,7 @@
     "aliases": ["matrix"],
     "content": [
       "**Bridge** <:termux_smile:789347239591804950> <-> 🌉 <-> :termuwux:   ",
-      "Not everyone likes Discord! We bridge several Discord channels with Matrix rooms so more people can join. Users on both sides see all users and messages from both. If you are using Discord, a webhook causes Matrix users appear as bots.",
+      "Not everyone likes Discord! We bridge several Discord channels with Matrix rooms so more people can join. Users on both sides see all users and messages from both. If you are using Discord, a webhook causes Matrix users to appear as bots.",
       "",
       "channels currently bridged:",
       "<#641256914684084237> <-> #termux_termux:gitter.im",
