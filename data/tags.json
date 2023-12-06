@@ -44,8 +44,14 @@
     "aliases": ["matrix"],
     "content": [
       "**Bridge** <:termux_smile:789347239591804950> <-> 🌉 <-> :termuwux:   ",
-      "To not force people to use one specific chat platform, we connected <#641256914684084237> and <#847704138711171084> channels to relay messages into Matrix: <https://matrix.to/#/#Termux:matrix.org>. It works through webhooks that pass messages between Discord and bridged rooms on Matrix, allowing us to hold conversations across multiple messaging platforms.",
-      "More details here: <https://matrix.org/bridges/>"
+      "Not everyone likes Discord! We bridge several Discord channels with Matrix rooms so more people can join. Users on both sides see all users and messages from both. If you are using Discord, a webhook causes Matrix users to appear as bots.",
+      "",
+      "channels currently bridged:",
+      "<#641256914684084237> <-> #termux_termux:gitter.im",
+      "<#847704138711171084> <-> #termux_dev:gitter.im",
+      "<#919135979313434644> <-> #coding:matrix.termux.club",
+      "",
+      "more info on Matrix: <https://matrix.org/about/>, <https://matrix.org/bridges/>"
     ]
   },
   { "name": "contr",
