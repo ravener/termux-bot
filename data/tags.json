@@ -136,8 +136,11 @@
   { "name": "hacking",
     "aliases": [],
     "content": [
-      "Information about Termux hacking:",
-      "👉 https://wiki.termux.com/wiki/hacking"
+      "If you are asking for help using Termux to:",
+      "- access someone else's data, computers, network, or accounts without permission",
+      "- send messages, posts, or traffic to someone who doesn't want it",
+      "- install tools that are dominantly for that kind of thing, such as Kali NetHunter",
+      "Termux official communities do not provide support for these uses, and asking more than once is one of the fastest paths to a ban. This is a simple rule - don't argue about it."
     ]
   },
   { "name": "ios",
