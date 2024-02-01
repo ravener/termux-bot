@@ -43,7 +43,7 @@
   { "name": "bridge",
     "aliases": ["matrix"],
     "content": [
-      "**Bridge** <:termux_smile:789347239591804950> <-> 🌉 <-> :termuwux:   ",
+      "**Bridge** <:termux_smile:789347239591804950> <-> 🌉 <-> <:termuwux:819159671520362537>",
       "Not everyone likes Discord! We bridge several Discord channels with Matrix rooms so more people can join. Users on both sides see all users and messages from both. If you are using Discord, a webhook causes Matrix users to appear as bots.",
       "",
       "channels currently bridged:",
@@ -54,38 +54,38 @@
       "more info on Matrix: <https://matrix.org/about/>, <https://matrix.org/bridges/>"
     ]
   },
-  { "name": "contr",
-    "aliases": [],
+  { "name": "contributing",
+    "aliases": ["contribute", "contrib"],
     "content": [
       "**Contributing to Termux**",
-      "-How you can contribute to the Termux project:",
+      "- How you can contribute to the Termux project:",
       "<https://github.com/termux/termux-packages/blob/master/CONTRIBUTING.md>",
-      "-How to build packages:",
+      "- How to build packages:",
       "<https://github.com/termux/termux-packages/wiki/Building-packages>",
-      "-Differences from Linux:",
+      "- Differences from Linux:",
       "<https://wiki.termux.com/wiki/Differences_from_Linux>"
     ]
   },
-  { "name": "emacs4newcomers",
-    "aliases": [],
+  { "name": "emacs",
+    "aliases": ["emacs4newcomers"],
     "content": [
-      "https://github.com/doomemacs/doomemacs",
-      "^ Best way to start with Emacs"
+      "**Best way to start with Emacs**",
+      "https://github.com/doomemacs/doomemacs"
     ]
   },
   { "name": "examples",
     "aliases": [],
     "content": [
-      "### What can I do with Termux?",
+      "**What can I do with Termux?**",
       "Here's a __few__ examples of what you can do using Termux:",
-      "- convert or process audio/video: `sox,ffmpeg`",
+      "- convert or process audio/video: `sox`, `ffmpeg`",
       "- code anything: `python`, `C`, `go`, `lua`, *and many more!*",
       "- ^ using text-editors like `nano`, `emacs`, and `neovim`",
-      "- run a Discord bot: `discordia`",
+      "- run a Discord bot: `discord.py`,  `discordia`",
       "- host a personal website: `ngrok`, `caddy`",
       "- enjoy fun screensavers : `cmatrix`, `nyancat`, `cbonsai`",
       "- run an SSH client/server: `openssh`, `dropbear`, `ttyd`",
-      "- synchronize or back up your files: `rdiff`, `rclone`, `dufs`",
+      "- synchronize or back up your files: `rdiff`, `rclone`, `rsync`, `dufs`",
       "- use one of thousands of apps from our repository",
       "- compile your own using many common tools",
       "- learn the basics of the Linux command line environment"
@@ -102,7 +102,7 @@
       "Choose the first/topmost option on each screen. _(If that one fails, try another.)_",
       "**2.** `pkg update && pkg upgrade` (to update your package database, then upgrade all packages)",
       "On each prompt, press `y` and `Enter` to install newest versions available",
-      "**3.** `exit` (to exit Termux, so you can restart it yourself, all updated!)",
+      "**3.** `exit` (to exit Termux, so you can restart it yourself, all updated!)"
     ]
   },
   { "name": "goodpractices",
@@ -134,7 +134,7 @@
     ]
   },
   { "name": "hacking",
-    "aliases": [],
+    "aliases": ["hack"],
     "content": [
       "If you are asking for help using Termux to:",
       "- access someone else's data, computers, network, or accounts without permission",
@@ -144,7 +144,7 @@
     ]
   },
   { "name": "ios",
-    "aliases": [ "iphone" ],
+    "aliases": ["iphone"],
     "content": [
       "Termux is for Android only, but there are a few alternatives on iOS:",
       "iSH: <https://apps.apple.com/us/app/ish-shell/id1436902243>",
@@ -335,11 +335,22 @@
     "aliases": [],
     "content": ["https://tryitands.ee/"]
   },
-  { "name": "vim4newcomers",
-    "aliases": [],
+  { "name": "vim",
+    "aliases": ["vim4newcomers"],
     "content": [
-      "The best way to get started with vim is using `vimtutor`, which is pre-included with vim / neovim!",
-      "If you're looking for some pre-configured framework with sane defaults and plugins, [LunarVim](https://github.com/LunarVim/LunarVim) might be for you!"
+      "**The best way to learn vim is by using the tutor mode that's included with vim and neovim.**",
+      "- vim: `vimtutor`",
+      "- nvim: `nvim +Tutor`",
+      "",
+      "**Resources:**",
+      "- If you're new to nvim configuration try kickstart for easy setup",
+      "<https://github.com/nvim-lua/kickstart.nvim>",
+      "- Learn more about nvim configuration with lua",
+      "<https://github.com/nanotee/nvim-lua-guide>",
+      "- Looking for IDE like experience out of the box?",
+      "<https://github.com/LazyVim/LazyVim>",
+      "- List of popular plugins",
+      "<https://github.com/rockerBOO/awesome-neovim>"
     ]
   },
   { "name": "virtualization",
