@@ -355,5 +355,17 @@
       "",
       "For running proot-distro distributions with foreign architectures, see <https://github.com/termux/proot-distro#adding-distribution> for info on how to setup distribution aliases."
     ]
+  },
+  { "name": "search",
+    "aliases": ["searchit", "askgoogle"],
+    "content": [
+      "## Search before asking!",
+      "If you have any question that you wanted to ask to people, search it first. There's might be an answer to your question in the Internet if you take the effort to search it.",
+      "\nHere's list of search engines to use:",
+      "- [Google](<https://google.com>) of course.",
+      "- [DuckDuckGo](<https://duckgo.com>) if your question is programmer-ish.",
+      "- [Phind](<https://phind.com>), like DDG except it's AI with an explanation. Not recommended for people who are allergic to AI.",
+      "\nhttps://giybf.com (Might be useful for future reference.)"
+    ]
   }
 ]
