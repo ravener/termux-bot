@@ -1,11 +1,9 @@
 local fs = require('fs')
-local json = require('json')
-local tags = json.decode(fs.readFileSync('data/tags.json'))
 
 local function tagCommand(message, args, meta)
   if #args < 1 then
     local names = {}
-    for i, v in ipairs(tags) do
+    for i, v in ipairs(meta.tags) do
       table.insert(names, v.name)
     end
 
@@ -15,7 +13,7 @@ local function tagCommand(message, args, meta)
   local name = args[1]:lower()
   local tag
   
-  for i, v in ipairs(tags) do
+  for i, v in ipairs(meta.tags) do
     if v.name == name then
       tag = v
     else

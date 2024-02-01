@@ -9,6 +9,7 @@ local pp = require("pretty-print")
 
 local config = json.decode(fs.readFileSync("config.json"))
 local status = json.decode(fs.readFileSync("status.json"))
+local tags = json.decode(fs.readFileSync("data/tags.json"))
 local tz = json.decode(fs.readFileSync("tz.json"))
 local logLevel = discordia.enums.logLevel
 
@@ -179,7 +180,8 @@ local function handleCommands(message)
       config = config,
       db = db,
       general = message.channel.id == general,
-      isAdmin = isAdmin
+      isAdmin = isAdmin,
+      tags = tags
     })
   end)
 
