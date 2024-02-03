@@ -347,7 +347,7 @@
     "content": [
       "**Virtualization**",
       "- QEMU",
-      "Can run most OSes by emulating hardware. Usually slow, partly because very few Android devices have hardwre virtualization extensions.",
+      "Can run most OSes by emulating hardware. Usually slow, partly because very few Android devices have hardware virtualization extensions.",
       "- PRoot + QEMU",
       "Enabling user mode emulation with PRoot's `-q` parameter uses QEMU to emulate an x86 rootfs on ARM. It's usably fast for simple programs. No peripheral emulation is performed, just CPU architecture emulation.",
       "- PRoot + Box86/64",
