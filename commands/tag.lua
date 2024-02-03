@@ -1,5 +1,3 @@
-local fs = require('fs')
-
 local function tagCommand(message, args, meta)
   if #args < 1 then
     local names = {}

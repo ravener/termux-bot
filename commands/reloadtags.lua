@@ -1,4 +1,5 @@
 local cp = require('childprocess')
+local fs = require('fs')
 local json = require('json')
 
 local function reloadTagsCommand(msg, args, meta)
