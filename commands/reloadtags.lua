@@ -30,7 +30,7 @@ local function reloadTagsCommand(msg, args, meta)
 
     -- If the pull was successful, reload the tags.
     if not err then
-      meta.tags = json.decode(fs.readFileSync("data/tags.json"))
+      meta.tags.list = json.decode(fs.readFileSync("data/tags.json"))
     end
   end))  
 end

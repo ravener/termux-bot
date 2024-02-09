@@ -1,7 +1,7 @@
 local function tagCommand(message, args, meta)
   if #args < 1 then
     local names = {}
-    for i, v in ipairs(meta.tags) do
+    for i, v in ipairs(meta.tags.list) do
       table.insert(names, v.name)
     end
 
@@ -11,7 +11,7 @@ local function tagCommand(message, args, meta)
   local name = args[1]:lower()
   local tag
   
-  for i, v in ipairs(meta.tags) do
+  for i, v in ipairs(meta.tags.list) do
     if v.name == name then
       tag = v
     else
