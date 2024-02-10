@@ -144,6 +144,16 @@
       "Termux official communities do not provide support for these uses, and asking more than once is one of the fastest paths to a ban. This is a simple rule - don't argue about it."
     ]
   },
+  { "name": "hi",
+    "aliases": ["hello"],
+    "content": [
+      "Hello and welcome! #general is a support chat and we try to stay focused on support discussion over idle chat and just saying \"hi\".",
+      "",
+      "If you have questions about termux, please go ahead and ask them! There are a lot of people in this room and someone will answer if and when they can.",
+      "",
+      "If you're just looking to chat, please try <#641650601507422218>."
+    ]
+  },
   { "name": "ios",
     "aliases": ["iphone"],
     "content": [
