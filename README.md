@@ -7,11 +7,13 @@ This is my first time using Discordia or even luvit so I expect very bad code he
 
 ## Running
 Fill `config.json` (see `config.json.example` for what to include)
+
 ```
 $ lit install SinisterRectus/discordia
 $ lit install SinisterRectus/sqlite3
 $ luvit main.lua
 ```
+
 No hosting support will be provided, this is a private bot.
 
 ## License
