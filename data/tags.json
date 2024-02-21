@@ -377,5 +377,18 @@
       "",
       "For running proot-distro distributions with foreign architectures, see <https://github.com/termux/proot-distro#adding-distribution> for info on how to setup distribution aliases."
     ]
+  },
+  { "name": "xy",
+    "aliases": [],
+    "content": [
+      "Here's a thing that happens sometimes:",
+      "**Person A**: I'm trying to get Y to work. help",
+      "**Person B**: sure. have you tried...",
+      "// many messages",
+      "**Person A**: that didn't work. I'm actually trying to do X.",
+      "**Person B**: Y wasn't a good way to do X. I could have given you the right answer at the beginning if you'd just said you really wanted X. what you need to do is...",
+      "",
+      "Don't be Person A. Pause for a minute and state your actual, final, top-level goal before talking about ways you think you can accomplish it. It'll save a lot of time and frustration."
+    ]
   }
 ]
