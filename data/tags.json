@@ -342,6 +342,19 @@
       "Although ChromeOS is Linux-based, you can't easily get a full Linux experience. Some Linux programs like Visual Studio Code and Android Studio are available on ChromeOS, but you can enable a Linux VM or install Crostini if your Chromebook supports them."
     ]
   },
+  { "name": "thirdparty",
+    "aliases": ["3p"],
+    "content": [
+      "This is a termux support space. If your issue is with a third-party project built on top of termux, we probably can't help you with it. Seek help from the author(s) of that project instead.",
+      "",
+      "Third-party projects, with starting points for support where we know them:",
+      "- Mobox: <https://github.com/olegos2/mobox/issues>",
+      "- Andronix: <https://github.com/AndronixApp/AndronixOrigin/issues>",
+      "- TUR (termux-user-repository): <https://github.com/termux-user-repository/tur/issues>",
+      "",
+      "This list isn't complete - if someone tells you a project is a derivative of termux, the same applies. If you need more help contacting the authors of a third-party project, please google it instead of asking for that here."
+    ]
+  },
   { "name": "try",
     "aliases": [],
     "content": ["https://tryitands.ee/"]
