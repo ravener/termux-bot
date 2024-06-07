@@ -238,10 +238,12 @@
     "aliases": ["p"],
     "content": [
       "**Termux on Google Play Store is OUTDATED ** <:playstore:1020972389628121088>🪦",
-      "Termux and its plugins are no longer updated on the Google Play Store. This is due to API requirements that introduce new restrictions, which break Termux's basic functionality.",
-      "Please switch to the <:fdroid:1020972731665235998> F-Droid version!",
+      "Termux on the Play Store is a fork of an old version with additional, unmerged changes, and is not controlled by the dev team at github.com/termux. Despite its existence and version number, it is not the newest or latest version.",
+      "",
+      "Unless you know exactly what you're doing, you should install Termux 0.118 from F-Droid <:fdroid:1020972731665235998>.",
       "Direct link: <https://f-droid.org/en/packages/com.termux>",
-      "**Before** you install it, You **must** __fully uninstall__ current Termux and all plugins. If you don't, you will get a cryptic `app not installed` error!",
+      "",
+      "If you have currently have the Play Store version installed and want to switch, you **must** first fully uninstall Termux and all companion apps. If you don't, you will get a cryptic `app not installed` error!",
       "(that means uninstalling the main app, as well as Termux:API, :Styling, :Widget, :Task, :Float, :Boot)",
       "If you need help with backing up your files:",
       "<https://wiki.termux.com/wiki/Backing_up_Termux>"
