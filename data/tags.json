@@ -237,7 +237,7 @@
   { "name": "playstore",
     "aliases": ["p"],
     "content": [
-      "Termux on the Play Store is a fork of an old version with additional, unmerged changes, and is not controlled by the dev team at github.com/termux. Despite its existence and version number, it is not the newest or latest version, and is significantly less functional than either the current F-Droid release or Github builds. More detail: <https://github.com/termux/termux-app/discussions/4000>",
+      "Termux on the Play Store is a fork of an old version with additional, unmerged changes, and is not controlled by the dev team at <https://github.com/termux>. Despite its existence and version number, it is not the newest or latest version, and is significantly less functional than either the current F-Droid release or Github builds. More detail: <https://github.com/termux/termux-app/discussions/4000>",
       "",
       "Unless you know exactly what you're doing, you should not use the Play Store version. Install Termux 0.118 from F-Droid <:fdroid:1020972731665235998>.",
       "Direct link: <https://f-droid.org/en/packages/com.termux>",
