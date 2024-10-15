@@ -173,6 +173,15 @@
       "<https://archive.org/details/termux-repositories-legacy>"
     ]
   },
+  { "name": "linux",
+    "aliases": ["distro"],
+    "content": [
+      "**Is Termux Linux?**",
+      "Depends what you mean by that. Android uses a modified Linux kernel, but programs written for desktop/server Linux environments, even for the same architecture, need to be recompiled or run in a translation layer, such as proot (<https://github.com/termux/proot-distro>). From most perspectives, you can think of Termux as a Linux distro targeted at Android, without pieces like kernels and init systems that Termux cannot provide because it is ultimately just another Android app.",
+      "**How is it different?**",
+      "Android has an incompatible filesystem layout and a unique libc and dynamic linker location, all of which require recompilation or some kind of translation or shim. Termux is also constrained to running everything as its single, unprivileged, Android-assigned user, and cannot enable programs to do anything that Termux, which is ultimately just an Android app, can't do itself. More details: <https://wiki.termux.com/wiki/Differences_from_Linux>."
+    ]
+  },
   { "name": "motd",
     "aliases": [],
     "content": [
