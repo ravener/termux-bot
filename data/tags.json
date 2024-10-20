@@ -182,6 +182,18 @@
       "Android has an incompatible filesystem layout and a unique libc and dynamic linker location, all of which require recompilation or some kind of translation or shim. Termux is also constrained to running everything as its single, unprivileged, Android-assigned user, and cannot enable programs to do anything that Termux, which is ultimately just an Android app, can't do itself. More details: <https://wiki.termux.com/wiki/Differences_from_Linux>."
     ]
   },
+  { "name": "logs",
+    "aliases": [],
+    "content": [
+      "Help us help you! No one can see your screen, and if you need help, you may not know which pieces of text are irrelevant and which are critical.",
+      "**DON'T**: say something is \"broken\" or \"doesn't work\"",
+      "**DON'T**: summarize, rephrase, or guess which lines are most important",
+      "**DO**: describe what your end goal is - what is the original thing you set out to do / the last step after which you'll say you're done?",
+      "**DO**: give the exact and complete command you ran, including a link to where you got it, if you didn't get it from `pkg`/`apt`/`pacman` with the default termux repos",
+      "**DO**: give the entire output you got - long press on the terminal and choose \"Share transcript\", or copy and paste, and be mindful of any personal info that might contain",
+      "**DO**: give all of this information with the initial question next time, instead of making someone ask you for it"
+    ]
+  },
   { "name": "motd",
     "aliases": [],
     "content": [
