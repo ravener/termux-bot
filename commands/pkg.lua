@@ -10,7 +10,7 @@ local function getDownloadURL(repo, filename)
     return string.format("https://tur.kcubeterm.com/%s", filename)
   end
 
-  return string.format("https://grimler.se/termux-%s/%s", repo, filename)
+  return string.format("https://packages-cf.termux.dev/apt/termux-%s/%s", repo, filename)
 end
 
 local function getURL(repo, arch)
@@ -23,7 +23,7 @@ local function getURL(repo, arch)
   if repo == "x11" then dir = {"x11", "main"} end
   if repo == "root" then dir = {"root", "stable"} end
 
-  return string.format("https://grimler.se/termux-%s/dists/%s/%s/binary-%s/Packages", repo, dir[1], dir[2], arch)
+  return string.format("https://packages-cf.termux.dev/apt/termux-%s/dists/%s/%s/binary-%s/Packages", repo, dir[1], dir[2], arch)
 end
 
 -- Fetch the package index for the given repo and arch.
