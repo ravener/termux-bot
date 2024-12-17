@@ -22,6 +22,7 @@ local function getURL(repo, arch)
   
   if repo == "x11" then dir = {"x11", "main"} end
   if repo == "root" then dir = {"root", "stable"} end
+  if repo == "glibc" then dir = { "glibc", "stable" } end
 
   return string.format("https://packages-cf.termux.dev/apt/termux-%s/dists/%s/%s/binary-%s/Packages", repo, dir[1], dir[2], arch)
 end
@@ -101,8 +102,9 @@ local function pkgCommand(msg, args, meta)
   local repo = (args[2] or "main"):lower()
   local arch = (args[3] or "aarch64"):lower()
 
-  if repo ~= "main" and repo ~= "x11" and repo ~= "root" and repo ~= "tur" then
-    return "Invalid repository given.\n\nValid values include: main, x11, root, tur"
+  local valid_repos = { main = true, x11 = true, root = true, glibc = true, tur = true }
+  if valid_repos[repo] ~= true then
+    return "Invalid repository given.\n\nValid values include: main, x11, root, glibc, tur"
   end
 
   if arch ~= "all" and arch ~= "arm" and arch ~= "aarch64" and arch ~= "x86_64" and arch ~= "i686" then
