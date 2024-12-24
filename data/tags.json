@@ -332,6 +332,16 @@
       "- Modify colors.properties to use whatever color scheme you want"
     ]
   },
+  { "name": "root",
+    "aliases": ["rooting"],
+    "content": [
+      "**How to root your phone:**",
+      "Termux cannot help you root your phone - it's just an app. Rooting any phone requires a model-specific process, and sometimes model-specific tools. Google \"<your phone model> root\". If you don't find anything, it's probably not possible. It is easy to break your phone's OS by following root procedures incorrectly or by assuming instructions for a slightly different phone are close enough.",
+      "**Should you root your phone?**",
+      "Rooting makes some specific things possible, and Termux becomes more useful for those specific things on rooted phones. If you don't know what, specifically, you need root for and why it solves that problem, *you should not root your phone*.",
+      "If you think rooting might solve a problem but aren't totally sure - ask for help!"
+    ]
+  },
   { "name": "saf",
     "aliases": [],
     "content": [
