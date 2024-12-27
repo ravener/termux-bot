@@ -141,7 +141,9 @@
       "- access someone else's data, computers, network, or accounts without permission",
       "- send messages, posts, or traffic to someone who doesn't want it",
       "- install tools that are dominantly for that kind of thing, such as Kali NetHunter",
-      "Termux official communities do not provide support for these uses, and asking more than once is one of the fastest paths to a ban. This is a simple rule - don't argue about it."
+      "Termux official communities do not provide support for these uses, and asking more than once is one of the fastest paths to a ban.",
+      "It does not matter if it's for \"educational purposes\".",
+      "This is a simple rule - don't argue about it."
     ]
   },
   { "name": "hi",
@@ -335,9 +337,10 @@
   { "name": "root",
     "aliases": ["rooting"],
     "content": [
-      "**How to root your phone:**",
+      "",
+      "**How do I root my phone?**",
       "Termux cannot help you root your phone - it's just an app. Rooting any phone requires a model-specific process, and sometimes model-specific tools. Google \"<your phone model> root\". If you don't find anything, it's probably not possible. It is easy to break your phone's OS by following root procedures incorrectly or by assuming instructions for a slightly different phone are close enough.",
-      "**Should you root your phone?**",
+      "**Should I root my phone?**",
       "Rooting makes some specific things possible, and Termux becomes more useful for those specific things on rooted phones. If you don't know what, specifically, you need root for and why it solves that problem, *you should not root your phone*.",
       "If you think rooting might solve a problem but aren't totally sure - ask for help!"
     ]
