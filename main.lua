@@ -237,6 +237,19 @@ client:on("messageUpdate", function (message)
 end)
 
 client:on("messageDelete", function (message)
+  if message.webhookId then
+    local modlogs = client:getChannel("810521091973840957")
+
+    modlogs:send {
+      embed = {
+        title = "Matrix Message Deleted",
+        color = 0xFF0000,
+        author = { name = message.author.tag, icon_url = message.author:getAvatarURL() },
+        description = message.content
+      }
+    }
+  end
+
   if message.author == client.user then
     for k, reply in pairs(replies) do
       if message == reply then

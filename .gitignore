@@ -4,4 +4,5 @@ discordia.log
 config.json
 data
 db.sqlite
+db.sqlite-journal
 tz.json
