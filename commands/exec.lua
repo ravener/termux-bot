@@ -35,5 +35,6 @@ return {
   run = execCommand,
   aliases = {"shell"},
   ownerOnly = true,
-  description = "Executes commandline code."
+  description = "Executes commandline code.",
+  disabled = true
 }

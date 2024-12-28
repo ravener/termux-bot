@@ -154,6 +154,7 @@ local function handleCommands(message)
   local cmd = commands[command] or commands[aliases[command]]
 
   if not cmd then return end
+  if cmd.disabled then return end
   if message.channel.id == general and cmd.restricted then return end
 
   if cmd.guildOnly and not message.guild then

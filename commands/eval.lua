@@ -50,7 +50,7 @@ local function evalCommand(message, args, meta)
   local success, runtimeError = pcall(fn)
   if not success then return code(runtimeError) end
 
-  lines = table.concat(lines, '\n')
+  local lines = table.concat(lines, '\n')
 
   if #lines > 1990 then -- truncate long messages
     lines = lines:sub(1, 1990)
@@ -65,5 +65,6 @@ return {
   run = evalCommand,
   aliases = {"lua"},
   ownerOnly = true,
-  description = "Evaluates Lua code"
+  description = "Evaluates Lua code",
+  disabled = true
 }
