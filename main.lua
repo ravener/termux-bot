@@ -245,7 +245,8 @@ client:on("messageDelete", function (message)
         title = "Matrix Message Deleted",
         color = 0xFF0000,
         author = { name = message.author.tag, icon_url = message.author:getAvatarURL() },
-        description = message.content
+        description = message.content,
+        footer = { text = string.format("Channel: #%s", message.channel.name) }
       }
     }
   end
