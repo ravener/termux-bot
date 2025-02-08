@@ -270,6 +270,18 @@
       "If you need help with backing up your files: <https://wiki.termux.com/wiki/Backing_up_Termux>"
     ]
   },
+  { "name": "ports",
+    "aliases": [],
+    "content": [
+      "**Reaching servers and services in Termux from outside your network**",
+      "*This is dangerous.* You must assume that any port reachable from the internet will be constantly attacked, forever, and anything left open by default or by accident, or with a guessable password, will be immediately compromised. You may not notice immediately, or ever, if this happens, and your computers may be used to hurt other people until you do. Stop here if you aren't confident you understand the risks and willing to take responsibility for getting it wrong.",
+      "",
+      "Most people's home networks have dynamic public addresses and are behind at least one layer of NAT (<https://en.wikipedia.org/wiki/Network_address_translation>), making it impossible for incoming connections to reach your device. You can work around that by:",
+      "1. Forwarding a port from your router to your phone. This requires that you are behind a single layer of NAT, that you set up dynamic DNS (or expect it to break regularly), and that you configure a consistent local address for the device running Termux. You will need to learn all of these topics before you will be able to do this comfortably.",
+      "2. Using one of several services to tunnel a public port back to your device. These are easier to set up, but require you to pass your traffic through someone else's servers. Tailscale Funnel, ngrok, and cloudflared provide this for free.",
+      "3. Setting up a VPN. There are many ways to do this, some of which still require you to pass your traffic through someone else's servers, but a VPN keeps you and others safer from the risks of exposing things to the internet. Tailscale and ZeroTier provide this for free. (Most things people talk about called \"VPNs\" can't do this.)"
+    ]
+  },
   { "name": "problemsolving",
     "aliases": [],
     "content": [
