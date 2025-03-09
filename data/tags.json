@@ -370,22 +370,15 @@
   { "name": "termuxpc",
     "aliases": ["Termux4PC", "T4W"],
     "content": [
-      "**Termux on PC**",
+      "**Termux on PC (Windows or ChromeOS)**",
       "",
-      "There is no such thing as Termux on PC. However, there are ways to use normal Linux in your computer, so that you can get a Termux-like experience (without the Termux headache).",
+      "Termux is an Android app. It doesn't make sense to use it on Windows or ChromeOS, and using it on BlueStacks or other Android emulators is unsupported. If you want Linux or a Linux-like environment on a PC, there are much, much better answers:",
       "",
-      "- Using virtualization software",
-      "Software such as QEMU (FOSS), VMware Workstation (paid), Parallels (paid, for macOS), VirtualBox (FOSS), or Hyper-V (included in professional and enterprise versions of Windows, but needs to be enabled) allows you to virtualize Windows, Linux, or another OS within Windows, macOS, and Linux. For beginners, we recommend VirtualBox, because it's easier to use and is completely FOSS.",
+      "- Windows Subsystem for Linux (WSL)",
+      "WSL is an official Windows component that allows you to run Linux distros within Windows. The default version of WSL, WSL2, is a full Linux VM with easy access to your files and the ability to run graphical Linux programs. WSL1 is still available and is not a VM, if you can't use WSL2 for any reason. <https://learn.microsoft.com/en-us/windows/wsl/install>",
       "",
-      "- Dual-booting or installing Linux on a bare metal host",
-      "If you can't use virtualization, you can directly install Linux on your computer from removable media, like a USB flash drive. You can either dual boot to have Linux alongside Windows, or replace your installation entirely with Linux.",
-      "",
-      "- Windows Subsystem for Linux",
-      "WSL is a Windows component that allows you to run Linux distros within Windows. The newest version of WSL, WSL2, uses the Hyper-V technology mentioned earlier to get a near-native Linux experience. WSL1 is also available, which is a system calls translation layer instead of a VM.",
-      "<https://learn.microsoft.com/en-us/windows/wsl/install>",
-      "",
-      "- Linux (beta)/Crostini",
-      "Although ChromeOS is Linux-based, you can't easily get a full Linux experience. Some Linux programs like Visual Studio Code and Android Studio are available on ChromeOS, but you can enable a Linux VM or install Crostini if your Chromebook supports them."
+      "- Crostini (ChromeOS)",
+      "Crostini is a ChromeOS component that provides a Linux VM with easy file access and the ability to run graphical Linux programs. <https://chromeos.dev/en/linux/setup>"
     ]
   },
   { "name": "thirdparty",
