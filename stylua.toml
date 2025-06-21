@@ -1,0 +1,14 @@
+syntax = 'LuaJIT'
+column_width = 120 # i'd potentially be ok with up to 150 maybe, 120 is def the minimum tho
+line_endings = 'Unix'
+indent_type = 'Spaces'
+indent_width = 4
+quote_style = 'AutoPreferSingle' # kinda unsure on this one, both kinda works, i'd go with the majority if there's a popular style in the lua community.
+call_parentheses = 'Input'# on a case-by-case basis, sometimes using no parens on single table calls looks nice.
+space_after_function_names = 'Never'# if only it had annonymous, oh well
+collapse_simple_statement = 'ConditionalOnly' # let's see how it works
+
+# i assume this sorts the imports? always a nice thing i guess
+[sort_requires]
+enabled = true
+
