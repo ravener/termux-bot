@@ -2,7 +2,8 @@ deps
 gateway.json
 discordia.log
 config.json
-data
+data/*
+!data/tags.json
 db.sqlite
 db.sqlite-journal
 tz.json
