@@ -122,16 +122,10 @@
     "aliases": [],
     "content": [
       "**How to Termux**",
-      "- Learn your way around the terminal",
+      "- Learn the basics of using a Linux shell in a terminal:",
       "<https://linuxjourney.com/lesson/the-shell>",
-      "- Getting started on Termux",
-      "<https://wiki.termux.com/wiki/Getting_started>",
-      "- Differences from a usual Linux distribution ",
-      "<https://wiki.termux.com/wiki/Differences_from_Linux>",
-      "- Basics of Bash (the default shell)",
-      "<http://mywiki.wooledge.org/BashGuide/CommandsAndArguments>",
-      "- Bash cheatsheet",
-      "<https://devhints.io/bash>"
+      "- Learn more about `bash` (the most common Linux shell, and the default in Termux):",
+      "<http://mywiki.wooledge.org/BashGuide/CommandsAndArguments>"
     ]
   },
   { "name": "hacking",
