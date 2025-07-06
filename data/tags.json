@@ -1,19 +1,4 @@
 [
-  { "name": "t4wmeme",
-    "aliases": [],
-    "content": ["https://i.imgur.com/sMpi5UI.png"]
-  },
-  { "name": "actions",
-    "aliases": [],
-    "content": [
-      "**Getting (Unstable!) Termux APKs from Github Actions** <:android:829651697688641565><:github:877835664710856724>",
-      "__Step 1:__ Inside the Github repo you want an APK of, click on `Actions` tab.",
-      "*(you need to be logged into Github to access it!)*",
-      "__Step 2:__ Choose a recent workflow run tagged __build__ , preferably on the `master` branch.",
-      "__Step 3:__ Scroll down to **Artifacts** and choose the APK file matching your phone's architecture.",
-      "*(if you don't know which one to pick, pick the universal version!)*"
-    ]
-  },
   { "name": "ask",
     "aliases": [],
     "content": ["https://dontasktoask.com"]
@@ -374,7 +359,7 @@
     ]
   },
   { "name": "termuxpc",
-    "aliases": ["Termux4PC", "T4W"],
+    "aliases": ["t4w", "t4wmeme", "Termux4PC", "T4W"],
     "content": [
       "**Termux on PC (Windows or ChromeOS)**",
       "",
