@@ -4,7 +4,7 @@ local round = discordia.extensions.math.round
 local uptime = os.time()
 
 local function statsCommand(msg, args, meta)
-  local memory = round(process.memoryUsage().heapUsed / 1024 / 1024, 2)
+  local memory = round(process:memoryUsage().heapUsed / 1024 / 1024, 2)
   local time = discordia.Time.fromSeconds(os.time() - uptime):toString()
   local format = ""
 

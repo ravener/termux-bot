@@ -4,6 +4,40 @@ local http = require("coro-http")
 local round = discordia.extensions.math.round
 local color = 0xFFAB87
 
+local function fuzzyFind(haystack, needle, opts)
+  opts = opts or {}
+  local maxDistance = opts.maxDistance or 3
+  local limit = opts.limit or 5
+
+  -- collect candidates that pass the distance gate
+  local candidates = {}
+  for key, _ in pairs(haystack) do
+    local distance = string.levenshtein(needle, key)
+
+    if distance <= maxDistance then
+      table.insert(candidates, { value = key, distance = distance })
+    end
+  end
+
+  -- order by distance (then alphabetical as tie-breaker)
+  table.sort(candidates, function (a, b)
+    if a.distance == b.distance then
+      return a.value < b.value
+    end
+
+    return a.distance < b.distance
+  end)
+
+  -- return the top N results
+  local out, n = {}, math.min(limit, #candidates)
+
+  for i = 1, n do
+    out[i] = candidates[i]
+  end
+
+  return out
+end
+
 
 local function getDownloadURL(repo, filename)
   if repo == "tur" then
@@ -114,7 +148,19 @@ local function pkgCommand(msg, args, meta)
   local index = parseIndex(fetchIndex(repo, arch))
   
   if not index[pkg] then
-    return string.format("Package not found in `%s` repository.", repo)
+    local closeMatches = fuzzyFind(index, pkg)
+    
+    if #closeMatches == 0 then
+      return string.format("Package not found in `%s` repository.", repo)
+    end
+
+    local str = "Package not found but there are close matches:\n\n"
+
+    for _, v in ipairs(closeMatches) do
+      str = str .. string.format("* `%s`\n", v)
+    end
+
+    return str
   end
 
   local info = index[pkg]

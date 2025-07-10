@@ -1,6 +1,7 @@
 local cp = require('childprocess')
 local fs = require('fs')
 local json = require('json')
+local pp = require('pretty-print')
 
 local function reloadTagsCommand(msg, args, meta)
   cp.exec('git pull', coroutine.wrap(function (err, stdout, stderr)
