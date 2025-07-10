@@ -157,7 +157,7 @@ local function pkgCommand(msg, args, meta)
     local str = "Package not found but there are close matches:\n\n"
 
     for _, v in ipairs(closeMatches) do
-      str = str .. string.format("* `%s`\n", v)
+      str = str .. string.format("* `%s`\n", v.value)
     end
 
     return str
