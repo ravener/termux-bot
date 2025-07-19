@@ -232,6 +232,7 @@
   { "name": "pkvm",
     "aliases": [],
     "content": [
+      "",
       "**What?**",
       "Starting with Android 15, some devices have a Terminal app that runs a Debian virtual machine. It is built with Android's pKVM framework, which allows apps to start virtual machines that are protected from the Android OS.",
       "",
