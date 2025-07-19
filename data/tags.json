@@ -229,6 +229,25 @@
       "<https://github.com/agnostic-apollo/Android-Docs/blob/master/en/docs/apps/processes/phantom-cached-and-empty-processes.md#commands-to-disable-phantom-process-killing-and-tldr> (link above takes you to end chapter; read the full thread for an in-depth description of what's happening)"
     ]
   },
+  { "name": "pkvm",
+    "aliases": [],
+    "content": [
+      "**What?**",
+      "Starting with Android 15, some devices have a Terminal app that runs a Debian virtual machine. It is built with Android's pKVM framework, which allows apps to start virtual machines that are protected from the Android OS.",
+      "",
+      "**Is it better than Termux? Will it be?**",
+      "Depends. It's a real VM, so it can do some of the things plain Termux and proots can't. For example, running docker is as easy in these VMs as it is on a standalone computer.",
+      "",
+      "On the other hand, the framework doesn't provide the kind of access to Android APIs that Termux:API does, and there's no evidence that's being worked on. pKVMs are likely to be less useful for automating your phone.",
+      "",
+      "It's not yet clear whether pKVM will evolve into a good option for running graphical environments. As of mid-2025, Google appears to be working on GUI support, but nothing has been promised or shipped.",
+      "",
+      "There's no single answer here. It depends on what you want, and on the unknown futures of both projects.",
+      "",
+      "**Why does pKVM exist?**",
+      "Definitely not to make a first-party Termux. The \"protected\" in pKVM is that the VM is protected from your Android OS, even with root. This is valuable to companies implementing things like DRM, anti-cheat, and spoofing-resistant authentication. The Debian VM is just a happy accident for users."
+    ]
+  },
   { "name": "placeholder",
     "aliases": [],
     "content": [
