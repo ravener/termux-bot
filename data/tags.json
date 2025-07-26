@@ -437,7 +437,7 @@
       "- PRoot + QEMU",
       "Enabling user mode emulation with PRoot's `-q` parameter uses QEMU to emulate an x86 rootfs on ARM. It's usably fast for simple programs. No peripheral emulation is performed, just CPU architecture emulation.",
       "- PRoot + Box86/64",
-      "Best for running Windows apps. You can use this to run a binary compiled for x86/x64 with decent performance. Box86 and Box64 can only run on CPUs with matching address sizes - you can't run box86 on a 64-bit CPU or box64 on a 32-bit one. Instructions on how to use and compile Box86/64 are in their repos' READMES.",
+      "Best for running Windows apps. You can use this to run a binary compiled for x86/x64 with decent performance. Box86 and Box64 can only run on CPUs with matching address sizes - you can't run box86 on a 64-bit CPU or box64 on a 32-bit one. Instructions on how to use and compile Box86/64 are in their repos' `README`s.",
       "",
       "For running proot-distro distributions with foreign architectures, see <https://github.com/termux/proot-distro#adding-distribution> for info on how to setup distribution aliases."
     ]
