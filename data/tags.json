@@ -322,7 +322,7 @@
     "aliases": [""],
     "content": [
       "**What is a proot, really?**",
-      "A proot is a box you can run processes in. The box fakes out a number of system calls make processes inside the box believe they are running somewhere other than Termux, which makes it possible to run some programs that wouldn't work without modifications in plain Termux.",
+      "A proot is a box you can run processes in. The box fakes out a number of system calls, which makes processes inside the box believe they are running somewhere other than Termux, which makes it possible to run some programs that wouldn't work without modifications in plain Termux.",
       "",
       "Processes inside the box see a different filesystem - usually, they see one that looks like a normal Linux root filesystem. proot will also fake out the user ID processes think they are running under, so the first process will believe it's running as root and other processes can believe they're running as new users.",
       "",
