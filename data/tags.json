@@ -392,11 +392,11 @@
     ]
   },
   { "name": "termuxpc",
-    "aliases": ["t4w", "t4wmeme", "Termux4PC", "T4W"],
+    "aliases": ["pc", "t4w", "t4wmeme", "Termux4PC", "T4W"],
     "content": [
       "**Termux on PC (Windows or ChromeOS)**",
       "",
-      "Termux is an Android app. It doesn't make sense to use it on Windows or ChromeOS, and using it on BlueStacks or other Android emulators is unsupported. If you want Linux or a Linux-like environment on a PC, there are much, much better answers:",
+      "Termux is an Android app. It doesn't make sense to use it on Windows or ChromeOS, and using it on BlueStacks or other Android emulators is unsupported. If you want a Linux-like environment on a PC, there are much, much better answers:",
       "",
       "- Windows Subsystem for Linux (WSL)",
       "WSL is an official Windows component that allows you to run Linux distros within Windows. The default version of WSL, WSL2, is a full Linux VM with easy access to your files and the ability to run graphical Linux programs. WSL1 is still available and is not a VM, if you can't use WSL2 for any reason. <https://learn.microsoft.com/en-us/windows/wsl/install>",
