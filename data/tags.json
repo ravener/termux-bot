@@ -55,14 +55,14 @@
   { "name": "devver",
     "aliases": [],
     "content": [
-      "*last updated August 2025*",
+      "*last updated September 2025*",
       "**What?**",
-      "In August 2025, Google announced that they would begin requiring developers to register and to provide some amount of identity information for sideloaded apks[0]. (Sideloading includes both F-Droid installs of Termux and manual downloads from Github.) The registration process is being described as similar to making a Play Store developer account. Once in effect, Android would refuse to install apks without a signature and package name matching a registered developer. A Google exec[1] has publicly stated that there is no intent to restrict sideloading beyond this, and that there is some plan to allow you to sideload self-build apks without registration. There are no other details available.",
+      "In August 2025, Google announced that they would begin requiring developers to register and to provide some amount of identity information for sideloaded apks[0]. (Sideloading includes both F-Droid installs of Termux and manual downloads from Github.) The registration process is being described as similar to making a Play Store developer account. Once in effect, Android would refuse to install apks without a signature and package name matching a registered developer. A Google exec[1] has publicly stated that there is no intent to restrict sideloading beyond this, and that there is some plan to allow you to sideload self-built apks without registration. There are no other details available.",
       "[0] <https://android-developers.googleblog.com/2025/08/elevating-android-security.html>",
       "[1] <https://xcancel.com/ssamat/status/1961089905842598190#m>",
       "",
       "**What does this mean for Termux? What's going to happen next?**",
-      "Nobody knows more than that."
+      "Nobody knows more than that. F-Droid has publicly stated that the expect it to essentially end their project: <https://f-droid.org/en/2025/09/29/google-developer-registration-decree.html>"
     ]
   },
   { "name": "emacs",
