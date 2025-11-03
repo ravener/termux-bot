@@ -331,7 +331,7 @@
       "- access files that Termux can't access, or mount new filesystems",
       "- load or use additional kernel drivers",
       "- manage or access networking beyond what Termux itself can do",
-      "- enable virtualization, docker, or any other containment mechanism requiring kernel support unavailable to Termux",
+      "- enable virtualization, docker, flatpaks, or any other containment mechanism requiring kernel support or permissions unavailable to Termux",
       "- root your phone"
     ]
   },
