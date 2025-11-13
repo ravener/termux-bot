@@ -56,14 +56,15 @@
   { "name": "devver",
     "aliases": [],
     "content": [
-      "*last updated September 2025*",
+      "*last updated November 2025*",
       "**What?**",
-      "In August 2025, Google announced that they would begin requiring developers to register and to provide some amount of identity information for sideloaded apks[0]. (Sideloading includes both F-Droid installs of Termux and manual downloads from Github.) The registration process is being described as similar to making a Play Store developer account. Once in effect, Android would refuse to install apks without a signature and package name matching a registered developer. Google has published an FAQ[1] describing how this will work in very vague terms. There are no other details available.",
+      "In August 2025, Google announced that they would begin requiring developers to register and to provide some amount of identity information for sideloaded apks[0]. (Sideloading includes both F-Droid installs of Termux and manual downloads from Github.) The registration process is being described as similar to making a Play Store developer account. Once in effect, Android would refuse to install apks without a signature and package name matching a registered developer.[1] F-Droid published a blog post in September stating that this would essentially end their project.[2]",
+      "",
+      "In November, a post on the Android Developers Blog stated that Google is changing course and will provide \"a new advanced flow that allows experienced users to accept the risks of installing software that isn't verified\".[3]",
       "[0] <https://android-developers.googleblog.com/2025/08/elevating-android-security.html>",
       "[1] <https://developer.android.com/developer-verification/guides/faq>",
-      "",
-      "**What does this mean for Termux? What's going to happen next?**",
-      "Nobody knows more than that. F-Droid has publicly stated that they expect it to essentially end their project: <https://f-droid.org/en/2025/09/29/google-developer-registration-decree.html>"
+      "[2] <https://f-droid.org/en/2025/09/29/google-developer-registration-decree.html>",
+      "[3] <https://android-developers.googleblog.com/2025/11/android-developer-verification-early.html>"
     ]
   },
   { "name": "emacs",
