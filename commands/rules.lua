@@ -1,6 +1,7 @@
+local snowflakes = require('snowflakes')
 
 local function rulesCommand(message, args, meta)
-  local channel = message.guild:getChannel("641258254051180564")
+  local channel = message.guild:getChannel(snowflakes.channels.rules)
   local rules = channel:getLastMessage()
 
   if #args < 1 then

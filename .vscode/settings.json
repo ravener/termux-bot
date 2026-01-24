@@ -3,5 +3,6 @@
         "${addons}/luvit/module/library"
     ],
     "Lua.workspace.checkThirdParty": false,
-    "Lua.runtime.version": "LuaJIT"
+    "Lua.runtime.version": "LuaJIT",
+    "stylua.targetReleaseVersion": "latest"
 }

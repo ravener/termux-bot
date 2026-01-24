@@ -6,6 +6,7 @@ local fs = require("fs")
 local json = require("json")
 local pathjoin = require("pathjoin")
 local pp = require("pretty-print")
+local snowflakes = require('snowflakes')
 
 local config = json.decode(fs.readFileSync("config.json"))
 local status = json.decode(fs.readFileSync("status.json"))
@@ -23,7 +24,6 @@ local aliases = {}
 local DIR = "./commands"
 local replies = {}
 local timeouts = {}
-local general = "641256914684084237"
 
 local env = setmetatable({
   require = require, -- inject luvit's custom require
@@ -72,8 +72,8 @@ client:on("ready", function()
     coroutine.wrap(client.setActivity)(client, status[math.random(#status)])
   end)
 
-  local channel = client:getChannel("898421586758107206")
-  local message = channel:getMessage("1038849777762320474")
+  local channel = client:getChannel(snowflakes.channels.staffRules)
+  local message = channel:getMessage(snowflakes.messages.timezone)
 
   -- Post timezone updates every minute.
   timer.setInterval(60 * 1000, function ()
@@ -94,15 +94,14 @@ client:on("ready", function()
 end)
 
 local prefix = config.dev and "d!" or "!"
-local activeRole = "803685296083828736"
 
 local function handlePoints(message)
   -- Ignores bots and DMs
   if not message.guild or message.author.bot then return end
   -- Ignore the #memes and #bots channels.
-  if message.channel.id == "820869096894890015" or message.channel.id == "641655510692790286" then return end
+  if message.channel.id == snowflakes.channels.memes or message.channel.id == snowflakes.channels.bots then return end
   -- Ignore staff category
-  if message.channel.category and message.channel.category.id == "810520642248114176" then return end
+  if message.channel.category and message.channel.category.id == snowflakes.categories.staff then return end
   -- Ignore messages shorter than 5 characters.
   -- This should prevent most short messages like:
   -- ok, okay, no, hi, lmao, wait, what, wow, etc.
@@ -118,7 +117,7 @@ local function handlePoints(message)
 
   -- Earn a random point between 4 to 12.
   -- #proficient channel is restricted to only 4 points.
-  local points = message.channel.id == "820884038373605387" and 4 or math.random(4, 12)
+  local points = message.channel.id == snowflakes.channels.proficient and 4 or math.random(4, 12)
   local rows = stmt:reset():bind(message.author.id, points, points):step()
 
   -- Timeout the user.
@@ -128,10 +127,10 @@ local function handlePoints(message)
     timeouts[message.author.id] = nil
   end)
 
-  if tonumber(rows[2]) >= 4096 and not message.member:hasRole(activeRole) then
-    message.member:addRole(activeRole)
+  if tonumber(rows[2]) >= 4096 and not message.member:hasRole(snowflakes.roles.active) then
+    message.member:addRole(snowflakes.roles.active)
 
-    local modlogs = message.guild:getChannel("810521091973840957")
+    local modlogs = message.guild:getChannel(snowflakes.channels.modlogs)
 
     modlogs:send {
       embed = {
@@ -155,19 +154,19 @@ local function handleCommands(message)
 
   if not cmd then return end
   if cmd.disabled then return end
-  if message.channel.id == general and cmd.restricted then return end
+  if message.channel.id == snowflakes.channels.general and cmd.restricted then return end
 
   if cmd.guildOnly and not message.guild then
     message:reply("This command can only be ran in a server.")
     return true
   end
 
-  if cmd.ownerOnly and message.author.id ~= config.owner and message.author.id ~= "315674862150483979" then
+  if cmd.ownerOnly and message.author.id ~= snowflakes.users.ravener and message.author.id ~= snowflakes.users.ted then
     message:reply("This command can only be ran by the bot owner.")
     return true
   end
 
-  local isAdmin = message.member and message.member:hasRole("641261997090144276")
+  local isAdmin = message.member and message.member:hasRole(snowflakes.roles.admin)
   if cmd.adminOnly and not isAdmin then
     message:reply("This command can only be ran by Admins.")
     return true
@@ -180,7 +179,7 @@ local function handleCommands(message)
       rawArgs = message.content:sub(#prefix + #command + 1),
       config = config,
       db = db,
-      general = message.channel.id == general,
+      general = message.channel.id == snowflakes.channels.general,
       isAdmin = isAdmin,
       tags = tags
     })
@@ -239,7 +238,7 @@ end)
 
 client:on("messageDelete", function (message)
   if message.webhookId then
-    local modlogs = client:getChannel("810521091973840957")
+    local modlogs = client:getChannel(snowflakes.channels.modlogs)
 
     modlogs:send {
       embed = {
