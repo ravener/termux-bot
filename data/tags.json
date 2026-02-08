@@ -234,7 +234,7 @@
     ]
   },
   { "name": "phantom",
-    "aliases": ["A12"],
+    "aliases": ["a12"],
     "content": [
       "**Phantom Process Killing** 📱   🔫 👻 ",
       "Termux being randomly killed and displaying `[Process completed (signal 9) - press Enter]` is a known problem. It is caused by an Android battery optimization called the phantom process killer.",
@@ -394,7 +394,7 @@
     ]
   },
   { "name": "termuxpc",
-    "aliases": ["pc", "t4w", "t4wmeme", "Termux4PC", "T4W"],
+    "aliases": ["pc", "t4w", "t4wmeme", "termux4pc"],
     "content": [
       "**Termux on PC (Windows or ChromeOS)**",
       "",
