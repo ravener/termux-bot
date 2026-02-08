@@ -1,7 +1,11 @@
 local function listAvailableTags(meta)
   local names = {}
   for i, v in ipairs(meta.tags.list) do
-    table.insert(names, v.name)
+    local name = v.name
+    if #v.aliases > 0 then
+      name = name .. " (" .. table.concat(v.aliases, ", ") .. ")"
+    end
+    table.insert(names, name)
   end
   return table.concat(names, ", ")
 end

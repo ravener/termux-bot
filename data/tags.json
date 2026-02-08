@@ -321,7 +321,7 @@
     ]
   },
   { "name": "proot",
-    "aliases": [""],
+    "aliases": [],
     "content": [
       "**What is a proot, really?**",
       "A proot is a box you can run processes in. The box fakes out a number of system calls, which makes processes inside the box believe they are running somewhere other than Termux, which makes it possible to run some programs that wouldn't work without modifications in plain Termux.",
