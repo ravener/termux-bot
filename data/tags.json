@@ -143,7 +143,7 @@
   { "name": "hi",
     "aliases": ["hello"],
     "content": [
-      "Hello and welcome! #general is a support chat and we try to stay focused on support discussion over idle chat and just saying \"hi\".",
+      "Hello and welcome! #termux is a support chat and we try to stay focused on support discussion over idle chat and just saying \"hi\".",
       "",
       "If you have questions about termux, please go ahead and ask them! There are a lot of people in this room and someone will answer if and when they can.",
       "",
