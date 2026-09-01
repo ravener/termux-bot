@@ -51,6 +51,7 @@ local function hashAttachment(att)
 end
 
 local buffers = {} -- guildId -> userId -> entry[]
+local timedOut = {} -- guildId -> userId -> timestamp; already-timed-out members are just cleaned up quietly
 
 --- Drops buffered entries older than WINDOW_MS.
 local function notExpired(entries, now)
@@ -76,9 +77,9 @@ local function isMatch(a, b)
   return false
 end
 
---- Records a message and, once matches span >= CHANNEL_THRESHOLD distinct channels,
---- returns the matched entries plus the buffer key. The buffer itself is left
---- intact until the caller confirms moderation actually went through.
+--- Records a message and returns the matched entries once they span >= CHANNEL_THRESHOLD
+--- distinct channels. The buffer itself is left intact until the caller confirms
+--- moderation actually went through.
 local function recordAndCheck(message)
   local attachments = message.attachments
   if not attachments or #attachments == 0 then return nil end
@@ -125,7 +126,7 @@ local function recordAndCheck(message)
   track(entry)
 
   if channelCount >= CHANNEL_THRESHOLD then
-    return matched, guildId, message.author.id
+    return matched
   end
 
   table.insert(existing, entry)
@@ -144,16 +145,33 @@ timer.setInterval(WINDOW_MS, function()
       buffers[guildId] = nil
     end
   end
+  for guildId, userTimeouts in pairs(timedOut) do
+    for userId, timestamp in pairs(userTimeouts) do
+      if now - timestamp > WINDOW_MS then
+        userTimeouts[userId] = nil
+      end
+    end
+    if not next(userTimeouts) then
+      timedOut[guildId] = nil
+    end
+  end
 end)
 
 --- Deletes the clustered messages, times out the author, and reports to modlogs.
---- Returns whether moderation actually happened, so the caller only clears the
---- buffered cluster once it has.
+--- Always returns true once a member was resolved, even if the timeout call
+--- itself failed: continuing to quiet-delete further messages from the author
+--- for the rest of the window is a safety net against a hijacked/spamming
+--- account, independent of whether the timeout API call succeeded.
 local function handleCluster(message, cluster)
   -- message.member can be nil for an uncached member; resolve it before deleting
   -- anything so a failure here doesn't leave messages deleted with no timeout/log.
   local member = message.guild:getMember(message.author.id)
   if not member then return false end
+
+  -- Timeout first: it's a single call, and applying it before working through
+  -- the per-message deletes below shortens the window in which the account can
+  -- still post further spam.
+  local timeoutOk, timeoutErr = member:timeoutFor(TIMEOUT_SECONDS)
 
   local channelIds, seen = {}, {}
   for _, e in ipairs(cluster) do
@@ -167,8 +185,6 @@ local function handleCluster(message, cluster)
   for _, e in ipairs(cluster) do
     if e.message:delete() then deleted = deleted + 1 end
   end
-
-  local timeoutOk, timeoutErr = member:timeoutFor(TIMEOUT_SECONDS)
 
   local modlogs = message.guild:getChannel(LOG_CHANNEL_ID)
   if not modlogs then return true end
@@ -206,19 +222,37 @@ local function handleCluster(message, cluster)
 end
 
 return {
-  --- Returns true if the message was spam and got moderated (deleted + timed out).
+  --- Returns true if the message was spam and got moderated: either it triggered
+  --- a cluster (deleted + timed out), or it arrived from a member already marked
+  --- timed out and got quietly deleted with no further fuss.
   check = function(message)
     if not message.guild or message.author.bot then return false end
+
+    local guildId = message.guild.id
+    local authorId = message.author.id
+
+    if timedOut[guildId] and timedOut[guildId][authorId] then
+      pcall(function() message:delete() end)
+      return true
+    end
+
     local ok, result = pcall(function()
-      local cluster, guildId, authorId = recordAndCheck(message)
+      local cluster = recordAndCheck(message)
       if not cluster then return false end
+
+      -- Marked before the yielding member/timeout/delete calls in handleCluster
+      -- so a message posted while those are in flight lands in the quiet-delete
+      -- branch above instead of racing a second timeout and modlog post.
+      timedOut[guildId] = timedOut[guildId] or {}
+      timedOut[guildId][authorId] = os.time() * 1000
+
       local moderated = handleCluster(message, cluster)
-      if moderated then
-        local userBuffers = buffers[guildId]
-        if userBuffers then userBuffers[authorId] = nil end
+      if not moderated and timedOut[guildId] then
+        timedOut[guildId][authorId] = nil
       end
       return moderated
     end)
+
     if not ok then
       print('spam detection failed: ' .. tostring(result))
       return false
