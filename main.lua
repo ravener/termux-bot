@@ -7,6 +7,7 @@ local json = require("json")
 local pathjoin = require("pathjoin")
 local pp = require("pretty-print")
 local snowflakes = require('snowflakes')
+local spam = require('spam')
 
 local config = json.decode(fs.readFileSync("config.json"))
 local status = json.decode(fs.readFileSync("status.json"))
@@ -226,7 +227,9 @@ local function handleCommands(message)
   return true
 end
 
+--- Runs spam detection first; points/commands are skipped for moderated messages.
 client:on("messageCreate", function (message)
+  if spam.check(message) then return end
   if not handleCommands(message) then
     handlePoints(message)
   end
