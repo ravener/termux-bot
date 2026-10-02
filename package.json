@@ -1,0 +1,52 @@
+{
+  "name": "termux-bot",
+  "version": "1.0.0",
+  "description": "Termux Discord Bot",
+  "private": true,
+  "keywords": [
+    "termux",
+    "bot",
+    "discord",
+    "api",
+    "commands"
+  ],
+  "imports": {
+    "#lib/*": "./dist/lib/*.js"
+  },
+  "homepage": "https://github.com/ravener/termux-bot#readme",
+  "bugs": {
+    "url": "https://github.com/ravener/termux-bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ravener/termux-bot.git"
+  },
+  "license": "MIT",
+  "author": "Ravener",
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "migrate": "drizzle-kit push",
+    "start": "node dist/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.1",
+    "drizzle-kit": "1.0.0-rc.4",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@sapphire/decorators": "^6.2.0",
+    "@sapphire/discord.js-utilities": "^7.3.3",
+    "@sapphire/framework": "5.5.0",
+    "@sapphire/pieces": "^4.4.1",
+    "@sapphire/stopwatch": "^1.5.4",
+    "@sapphire/utilities": "^3.18.2",
+    "better-sqlite3": "^13.0.3",
+    "discord.js": "^14.27.0",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "1.0.0-rc.4",
+    "fastest-levenshtein": "^1.0.16"
+  }
+}

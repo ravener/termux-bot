@@ -1,9 +1,8 @@
-deps
-gateway.json
-discordia.log
-config.json
-data/*
-!data/tags.json
+dist/
+node_modules/
+.env
 db.sqlite
-db.sqlite-journal
-tz.json
+tldr/
+
+data/timezones.json
+data/repos
