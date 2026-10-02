@@ -39,7 +39,7 @@ async function getPage(command: string, language = 'en') {
 const choices = await readdir('tldr/pages', { recursive: true })
     .then(files => files
         .filter(file => file.endsWith('.md'))
-        .map(file => file.replace('.md', '')));
+        .map(file => file.replace('.md', '').split('/')[1]!));
 
 // Map user's discord locale to tldr locales
 const localePages: Partial<Record<Locale, string>> = {
