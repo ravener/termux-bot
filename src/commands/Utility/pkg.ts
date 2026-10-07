@@ -10,13 +10,21 @@ import { getBytes } from '#lib/utils';
     aliases: ['apt', 'repo', 'package']
 })
 export class PackageCommand extends Command {
-    public override async messageRun(message: Message, args: Args) {
+    public override async messageRun(message: Message<true>, args: Args) {
         const pkg = await args.pick('string');
         const repo = args.finished ? 'main' : await args.pick('enum', { enum: validRepos }) as Repository;
         const arch = args.finished ? 'aarch64' : await args.pick('enum', { enum: validArch }) as Arch;
 
         const embed = await this.buildEmbed(pkg, repo, arch);
-        return message.reply({ embeds: [embed] });
+        const messageReference = message.reference?.messageId ?? message.id;
+
+        // Ping the user the author replied to if the message is a reply, otherwise ping the author of the command
+        // Used when you intend the bot's response towards another person
+        return message.channel.send({
+            embeds: [embed],
+            reply: { messageReference },
+            allowedMentions: { repliedUser: true }
+        });
     }
 
     public override async chatInputRun(interaction: ChatInputCommandInteraction) {
