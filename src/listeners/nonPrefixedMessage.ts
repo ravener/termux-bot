@@ -1,6 +1,7 @@
 import { Categories, Channels, Roles } from '#lib/constants';
 import { db } from '#lib/db';
 import { users } from '#lib/db/schema';
+import { checkSpam } from '#lib/spam';
 import { Events, Listener } from '@sapphire/framework';
 import { EmbedBuilder, type GuildMember, type Message } from 'discord.js';
 import { sql } from 'drizzle-orm';
@@ -27,8 +28,8 @@ export class NonPrefixeMessageListener extends Listener<typeof Events.NonPrefixe
         if (!message.inGuild()) return;
         if (message.author.bot || message.webhookId) return;
 
+        if (await checkSpam(message)) return;
         await this.handlePoints(message);
-        // TODO: Spam filter
     }
 
     private async handlePoints(message: Message<true>) {
