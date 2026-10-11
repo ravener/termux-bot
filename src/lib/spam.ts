@@ -52,13 +52,23 @@ async function handleCluster(message: Message<true>, cluster: Entry[]) {
         .timeout(TIMEOUT_MS, 'Cross-channel spam')
         .then(() => null, errorMessage);
 
+    const channel = message.guild.channels.cache.get(Channels.Modlogs);
+    const modlogs = channel?.isSendable() ? channel : null;
+
+    if (modlogs) {
+        await modlogs.send({
+            content: `Messages from <@${message.author.id}> (${message.author.tag}):`,
+            allowedMentions: { parse: [] },
+        }).catch(() => null);
+        for (const entry of cluster) await entry.message.forward(modlogs).catch(() => null);
+    }
+
     const results = await Promise.all(
         cluster.map((e) => e.message.delete().then(() => true, () => false)),
     );
     const deleted = results.filter(Boolean).length;
 
-    const modlogs = message.guild.channels.cache.get(Channels.Modlogs);
-    if (!modlogs?.isSendable()) return true;
+    if (!modlogs) return true;
 
     const channelIds = [...new Set(cluster.map((e) => e.channelId))];
     const embed = new EmbedBuilder()
