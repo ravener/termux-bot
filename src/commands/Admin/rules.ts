@@ -3,6 +3,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { EmbedBuilder, type Message } from 'discord.js';
 import { Channels } from '#lib/constants';
 import { codeBlock } from '@sapphire/utilities';
+import { reply } from '@sapphire/plugin-editable-commands';
 
 @ApplyOptions<Command.Options>({
     description: 'Displays or changes the server rules',
@@ -17,7 +18,7 @@ export class RulesCommand extends Command {
 
         const rulesChannel = message.guild.channels.cache.get(Channels.Rules);
         if (!rulesChannel || !rulesChannel.isTextBased()) {
-            await message.reply('Rules channel not found.');
+            await reply(message, 'Rules channel not found.');
             return;
         }
 
@@ -25,11 +26,11 @@ export class RulesCommand extends Command {
 
         if (args.finished) {
             if (!lastMessage || !lastMessage.embeds.length) {
-                await message.reply('No rules message found.');
+                await reply(message, 'No rules message found.');
                 return;
             }
 
-            await message.reply(codeBlock('md', lastMessage.embeds[0]?.description ?? 'No rules found.'));
+            await reply(message, codeBlock('md', lastMessage.embeds[0]?.description ?? 'No rules found.'));
             return;
         }
 
@@ -45,6 +46,6 @@ export class RulesCommand extends Command {
             await rulesChannel.send({ embeds: [embed] });
         }
 
-        await message.reply('Rules updated successfully.');
+        await reply(message, 'Rules updated successfully.');
     }
 }

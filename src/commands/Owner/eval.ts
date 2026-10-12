@@ -4,6 +4,7 @@ import { Stopwatch } from '@sapphire/stopwatch';
 import { codeBlock, isThenable } from '@sapphire/utilities';
 import { bold, type Message } from 'discord.js';
 import { inspect } from 'node:util';
+import { reply } from '@sapphire/plugin-editable-commands';
 
 @ApplyOptions<Command.Options>({
     description: 'Evaluates arbitrary JavaScript',
@@ -30,10 +31,10 @@ export class EvalCommand extends Command {
 
         if ([...header, ...body].length > 2000) {
             const file = { attachment: Buffer.from(result, 'utf8'), name: `output.${args.getFlags('json') ? 'json' : 'js'}` } as const;
-            return message.reply({ content: header, files: [file] });
+            return reply(message, { content: header, files: [file] });
         }
 
-        return message.reply(`${header}${body}`);
+        return reply(message, `${header}${body}`);
     }
 
     private async eval(message: Message, code: string, args: Args): Promise<EvalResults> {

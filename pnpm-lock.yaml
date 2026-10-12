@@ -20,6 +20,9 @@ importers:
       '@sapphire/pieces':
         specifier: ^4.4.1
         version: 4.4.1
+      '@sapphire/plugin-editable-commands':
+        specifier: ^4.0.4
+        version: 4.0.4
       '@sapphire/stopwatch':
         specifier: ^1.5.4
         version: 1.5.4
@@ -281,6 +284,10 @@ packages:
     resolution: {integrity: sha512-2v49P++RzHGb23bdjSa9u7flkdvhrq94IUO9PneY538TILN5QiMxfaXVK+pDR2YR7jpQYBy9APwtFDes2Svykg==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
+  '@sapphire/plugin-editable-commands@4.0.4':
+    resolution: {integrity: sha512-1Dd04IjZxYjPWupMJPAyOupWUvYNkhOAUdWhoIBRDRjy6eytOHYYD5TpH8QLXsfgbQNV/ETdWDG0IBVH/Vg/EA==}
+    engines: {node: '>=v18', npm: '>=7'}
+
   '@sapphire/ratelimits@2.4.11':
     resolution: {integrity: sha512-O6FNA/P0wxU4Ve9gxL948CoZw7+sSpujyUR2CLyLLCNuNvuFGFxPCJVl5crFVLXMIyBIrc2qk+/H9bsqsyQK1Q==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
@@ -304,6 +311,10 @@ packages:
   '@sapphire/utilities@3.18.2':
     resolution: {integrity: sha512-QGLdC9+pT74Zd7aaObqn0EUfq40c4dyTL65pFnkM6WO1QYN7Yg/s4CdH+CXmx0Zcu6wcfCWILSftXPMosJHP5A==}
     engines: {node: '>=v14.0.0'}
+
+  '@skyra/editable-commands@3.0.4':
+    resolution: {integrity: sha512-wQQqOt/GVnKTY0yfL9AmBCvoNIRa/4COxMDYS/TcQexabdZlIfxG4up2zKz8A1or5+73meDZ/D/SvUav36/V2w==}
+    engines: {node: '>=16.6', npm: '>=7.24.2'}
 
   '@types/node@26.6.1':
     resolution: {integrity: sha512-VqGJBMCtdhqkBUCcBLvywI0NJ+KLuVzgNnlBUNFOQjqVxzo2lxLUNg1DSey8+u2u6ktswSAxg+s68QLzWHNOuA==}
@@ -848,6 +859,10 @@ snapshots:
       '@sapphire/utilities': 3.18.2
       tslib: 2.8.1
 
+  '@sapphire/plugin-editable-commands@4.0.4':
+    dependencies:
+      '@skyra/editable-commands': 3.0.4
+
   '@sapphire/ratelimits@2.4.11': {}
 
   '@sapphire/result@2.8.0': {}
@@ -864,6 +879,8 @@ snapshots:
       tslib: 2.8.1
 
   '@sapphire/utilities@3.18.2': {}
+
+  '@skyra/editable-commands@3.0.4': {}
 
   '@types/node@26.6.1':
     dependencies:

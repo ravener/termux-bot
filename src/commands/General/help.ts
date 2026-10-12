@@ -2,6 +2,7 @@ import { Command, type MessageCommand } from '@sapphire/framework';
 import { ApplyOptions } from '@sapphire/decorators';
 import type { Message } from 'discord.js';
 import { codeBlock } from '@sapphire/utilities';
+import { reply } from '@sapphire/plugin-editable-commands';
 
 @ApplyOptions<Command.Options>({
     description: 'View command help',
@@ -21,6 +22,6 @@ export class HelpCommand extends Command {
             lines.push(`${command.name.padEnd(12)} :: ${command.description ?? 'No Description Provided'}`);
         }
 
-        return message.reply(codeBlock('asciidoc', lines.join('\n')));
+        return reply(message, codeBlock('asciidoc', lines.join('\n')));
     }
 }

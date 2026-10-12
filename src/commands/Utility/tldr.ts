@@ -3,6 +3,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { AutocompleteInteraction, EmbedBuilder, Locale, MessageFlags, type ChatInputCommandInteraction, type Message } from 'discord.js';
 import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
+import { reply } from '@sapphire/plugin-editable-commands';
 
 // Check these platforms in order. (Prioritize Android and Unix)
 const platforms = [
@@ -81,7 +82,7 @@ export class TLDRCommand extends Command {
         const language = await args.pick('string').catch(() => 'en');
         const embed = await this.buildManual(command, language ?? 'en');
 
-        await message.reply({ embeds: [embed] });
+        await reply(message, { embeds: [embed] });
     }
 
     public override async chatInputRun(interaction: ChatInputCommandInteraction) {

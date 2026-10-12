@@ -41,6 +41,7 @@
     "@sapphire/discord.js-utilities": "^7.3.3",
     "@sapphire/framework": "5.5.0",
     "@sapphire/pieces": "^4.4.1",
+    "@sapphire/plugin-editable-commands": "^4.0.4",
     "@sapphire/stopwatch": "^1.5.4",
     "@sapphire/utilities": "^3.18.2",
     "better-sqlite3": "^13.0.3",

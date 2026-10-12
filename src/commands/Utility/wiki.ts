@@ -2,6 +2,7 @@ import { searchWiki } from '#lib/wiki';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Args, Command } from '@sapphire/framework';
 import { EmbedBuilder, type ChatInputCommandInteraction, type Message } from 'discord.js';
+import { reply } from '@sapphire/plugin-editable-commands';
 
 @ApplyOptions<Command.Options>({
     description: 'Search for an article in the Termux Wiki',
@@ -12,7 +13,7 @@ export class WikiCommand extends Command {
         const query = await args.rest('string');
         const embed = await this.search(query);
 
-        await message.reply({ embeds: [embed] });
+        await reply(message, { embeds: [embed] });
     }
 
     public override async chatInputRun(interaction: ChatInputCommandInteraction) {

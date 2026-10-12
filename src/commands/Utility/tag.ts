@@ -2,6 +2,7 @@ import { listAvailableTags } from '#lib/tags';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Args, Command } from '@sapphire/framework';
 import { AutocompleteInteraction, type ChatInputCommandInteraction, type Message } from 'discord.js';
+import { reply, send } from '@sapphire/plugin-editable-commands';
 
 @ApplyOptions<Command.Options>({
     description: 'Displays a tag',
@@ -12,7 +13,7 @@ export class TagCommand extends Command {
         const tag = await args.pickResult('string');
 
         if (tag.isErr()) {
-            await message.reply(`List of available tags:\n\n${listAvailableTags(this.container.tags)}`);
+            await reply(message, `List of available tags:\n\n${listAvailableTags(this.container.tags)}`);
             return;
         }
 
@@ -21,7 +22,7 @@ export class TagCommand extends Command {
 
         // Ping the user the author replied to if the message is a reply, otherwise ping the author of the command
         // Used when you intend the bot's response towards another person
-        await message.channel.send({
+        await send(message, {
             content,
             reply: { messageReference },
             allowedMentions: { repliedUser: true }
