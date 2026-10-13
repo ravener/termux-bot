@@ -4,6 +4,7 @@ import { version, type Message } from 'discord.js';
 import { version as sapphireVersion } from '@sapphire/framework';
 import { codeBlock } from '@sapphire/utilities';
 import { getBytes } from '#lib/utils';
+import { reply } from '@sapphire/plugin-editable-commands';
 
 @ApplyOptions<Command.Options>({
     description: 'Returns bot statistics',
@@ -25,7 +26,7 @@ export class StatsCommand extends Command {
             `• Sapphire Version   :: ${sapphireVersion}`
         ];
 
-        return message.reply(codeBlock('asciidoc', lines.join('\n')));
+        return reply(message, codeBlock('asciidoc', lines.join('\n')));
     }
 }
 

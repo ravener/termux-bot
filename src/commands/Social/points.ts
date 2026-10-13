@@ -4,6 +4,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { Args, Command } from '@sapphire/framework';
 import type { ChatInputCommandInteraction, Message, User } from 'discord.js';
 import { eq, sql } from 'drizzle-orm';
+import { reply } from '@sapphire/plugin-editable-commands';
 
 const getUser = db
     .select()
@@ -21,7 +22,7 @@ export class PointsCommand extends Command {
     public override async messageRun(message: Message, args: Args) {
         const user = await args.pickResult('user');
         const points = await this.calculatePoints(user.unwrapOr(message.author), !user.isOk());
-        await message.reply(points);
+        await reply(message, points);
     }
 
     public override async chatInputRun(interaction: ChatInputCommandInteraction) {

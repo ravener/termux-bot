@@ -1,6 +1,7 @@
 import { Command } from '@sapphire/framework';
 import { ApplyOptions } from '@sapphire/decorators';
 import type { Message } from 'discord.js';
+import { reply } from '@sapphire/plugin-editable-commands';
 
 @ApplyOptions<Command.Options>({
     description: 'Shuts down the bot',
@@ -9,7 +10,7 @@ import type { Message } from 'discord.js';
 })
 export class ShutdownCommand extends Command {
     public override async messageRun(message: Message) {
-        await message.reply('Shutting down...');
+        await reply(message, 'Shutting down...');
         await this.container.client.destroy();
         process.exit(0);
     }

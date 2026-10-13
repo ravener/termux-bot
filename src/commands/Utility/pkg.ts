@@ -4,6 +4,7 @@ import { EmbedBuilder, type APIEmbedField, type ChatInputCommandInteraction, typ
 import { getDownloadURL, getRepository, validArch, validRepos, type Arch, type Repository } from '#lib/pkg';
 import { closest } from 'fastest-levenshtein';
 import { getBytes } from '#lib/utils';
+import { send } from '@sapphire/plugin-editable-commands';
 
 @ApplyOptions<Command.Options>({
     description: 'Shows information about a package',
@@ -20,7 +21,7 @@ export class PackageCommand extends Command {
 
         // Ping the user the author replied to if the message is a reply, otherwise ping the author of the command
         // Used when you intend the bot's response towards another person
-        return message.channel.send({
+        return send(message, {
             embeds: [embed],
             reply: { messageReference },
             allowedMentions: { repliedUser: true }

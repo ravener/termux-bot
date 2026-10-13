@@ -5,6 +5,7 @@ import { isObject } from '@sapphire/utilities';
 import type { Message } from 'discord.js';
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
+import { reply } from '@sapphire/plugin-editable-commands';
 
 const execAsync = promisify(exec);
 const GIT_PULL = 'git pull';
@@ -39,20 +40,20 @@ export class ReloadTagsCommand extends Command {
             const output = formatOutput(result.stdout, result.stderr);
 
             if (!output) {
-                await message.reply('No output returned.');
+                await reply(message, 'No output returned.');
                 return;
             }
 
             this.container.tags = await readTagsFile();
-            await message.reply(`${output}\nLoaded ${this.container.tags.length} tags.`);
+            await reply(message, `${output}\nLoaded ${this.container.tags.length} tags.`);
         } catch (err: unknown) {
             if (isExecError(err)) {
                 const output = formatOutput(err.stdout, err.stderr);
-                await message.reply(`Error running command (code: ${err.code}):\n${output}`);
+                await reply(message, `Error running command (code: ${err.code}):\n${output}`);
                 return;
             }
 
-            await message.reply(`Something went wrong: \`${err}\``);
+            await reply(message, `Something went wrong: \`${err}\``);
         }
     }
 }
