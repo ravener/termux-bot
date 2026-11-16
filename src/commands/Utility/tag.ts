@@ -1,7 +1,23 @@
 import { listAvailableTags } from '#lib/tags';
+import { deleteWithRetry } from '#lib/utils';
 import { ApplyOptions } from '@sapphire/decorators';
 import { Args, Command } from '@sapphire/framework';
-import { AutocompleteInteraction, type ChatInputCommandInteraction, type Message } from 'discord.js';
+import { chunk, sleep } from '@sapphire/utilities';
+import {
+    ApplicationCommandType,
+    AutocompleteInteraction,
+    ButtonBuilder,
+    ButtonStyle,
+    LabelBuilder,
+    MessageFlags,
+    ModalBuilder,
+    SectionBuilder,
+    StringSelectMenuBuilder,
+    TextDisplayBuilder,
+    type ChatInputCommandInteraction,
+    type Message,
+    type MessageContextMenuCommandInteraction
+} from 'discord.js';
 import { reply, send } from '@sapphire/plugin-editable-commands';
 
 @ApplyOptions<Command.Options>({
@@ -35,8 +51,66 @@ export class TagCommand extends Command {
         await interaction.reply(content);
     }
 
+    public override async contextMenuRun(interaction: MessageContextMenuCommandInteraction) {
+        const pages = chunk(this.container.tags, 25).slice(0, 5);
+        const modalId = `tag-select:${interaction.id}`;
+
+        await interaction.showModal(new ModalBuilder()
+            .setCustomId(modalId)
+            .setTitle('Reply with tag')
+            .addLabelComponents(pages.map((tags, i) => new LabelBuilder()
+                .setLabel(`Tags ${i * 25 + 1}-${i * 25 + tags.length}`)
+                .setStringSelectMenuComponent(new StringSelectMenuBuilder()
+                    .setCustomId(`tags-${i}`)
+                    .setRequired(false)
+                    .setMinValues(0)
+                    .setMaxValues(1)
+                    .addOptions(tags.map(tag => ({
+                        label: tag.name,
+                        value: tag.name,
+                        ...(tag.aliases.length ? { description: tag.aliases.join(', ') } : {})
+                    })))))));
+
+        const submit = await interaction
+            .awaitModalSubmit({
+                time: 2 * 60 * 1000,
+                filter: (i) => i.customId === modalId && i.user.id === interaction.user.id
+            })
+            .catch(() => null);
+        if (!submit) return;
+
+        const names = pages.flatMap((_, i) => submit.fields.getStringSelectValues(`tags-${i}`));
+        const error = names.length !== 1
+            ? (names.length ? 'Select only one tag.' : 'Select a tag.')
+            : !this.findTag(names[0]!) && 'That tag no longer exists.';
+        if (error) {
+            await submit.reply({ content: error, flags: MessageFlags.Ephemeral });
+            await sleep(15 * 1000);
+            await deleteWithRetry(() => submit.deleteReply());
+            return;
+        }
+
+        await submit.reply({
+            flags: MessageFlags.IsComponentsV2,
+            allowedMentions: { parse: [], users: [interaction.targetMessage.author.id] },
+            components: [
+                new TextDisplayBuilder().setContent(`-# ${interaction.targetMessage.author}`),
+                new SectionBuilder()
+                    .addTextDisplayComponents(new TextDisplayBuilder().setContent(this.getTag(names[0]!)))
+                    .setButtonAccessory(new ButtonBuilder()
+                        .setCustomId('tag-dismiss')
+                        .setLabel('✕')
+                        .setStyle(ButtonStyle.Secondary))
+            ]
+        });
+    }
+
+    private findTag(name: string) {
+        return this.container.tags.find(tag => tag.name === name || tag.aliases.includes(name));
+    }
+
     private getTag(name: string) {
-        const tag = this.container.tags.find(tag => tag.name === name || tag.aliases.includes(name));
+        const tag = this.findTag(name);
 
         if (tag) {
             if (Array.isArray(tag.content)) {
@@ -81,5 +155,9 @@ export class TagCommand extends Command {
                 .setRequired(true)
                 .setAutocomplete(true)
             ));
+
+        registry.registerContextMenuCommand((builder) => builder
+            .setName('Reply with tag')
+            .setType(ApplicationCommandType.Message));
     }
 }
