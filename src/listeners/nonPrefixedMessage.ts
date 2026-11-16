@@ -1,8 +1,9 @@
-import { Categories, Channels, Roles } from '#lib/constants';
+import { Categories, Channels, ReactionEmojis, Roles } from '#lib/constants';
 import { db } from '#lib/db';
 import { users } from '#lib/db/schema';
 import { checkSpam } from '#lib/spam';
 import { Events, Listener } from '@sapphire/framework';
+import { pickRandom } from '@sapphire/utilities';
 import { EmbedBuilder, type GuildMember, type Message } from 'discord.js';
 import { sql } from 'drizzle-orm';
 
@@ -21,6 +22,8 @@ const upsertUser = db
     .returning()
     .prepare();
 
+const UNICODE_REACTIONS = ['👾', '🪩', '😺', '😸'];
+
 const timeouts = new Set<string>();
 
 export class NonPrefixeMessageListener extends Listener<typeof Events.NonPrefixedMessage> {
@@ -29,7 +32,16 @@ export class NonPrefixeMessageListener extends Listener<typeof Events.NonPrefixe
         if (message.author.bot || message.webhookId) return;
 
         if (await checkSpam(message)) return;
+        await this.handleMention(message);
         await this.handlePoints(message);
+    }
+
+    private async handleMention(message: Message<true>) {
+        const { user } = this.container.client;
+        if (!user || !message.mentions.has(user, { ignoreEveryone: true, ignoreRoles: true, ignoreRepliedUser: true })) return;
+
+        const custom = ReactionEmojis.flatMap((id) => message.guild.emojis.cache.get(id) ?? []);
+        await message.react(pickRandom([...custom, ...UNICODE_REACTIONS])).catch(() => null);
     }
 
     private async handlePoints(message: Message<true>) {
