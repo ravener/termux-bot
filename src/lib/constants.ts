@@ -23,3 +23,21 @@ export const enum Messages {
 export const enum Categories {
     Staff = '810520642248114176'
 }
+
+export const ReactionEmojis = [
+    '789135586115977216', // termux
+    '789347239591804950', // termux_smile
+    '819159671520362537', // termuwux
+    '1091708209888247808', // termuwux1
+    '819159615865880586', // tewmux
+    '873858545618133033', // blobnomtermux
+    '847049150743052348', // tuxwtf
+    '886486014531620895', // RubyTaco
+    '1157639005115002930', // allok
+    '829651697688641565', // android
+    '902012096202567701', // blobcatheart
+    '969636962510188615', // blobSalute
+    '1559165418843676712', // mesa
+    '903499450759127050', // python
+    '1028771731034361877' // flux
+];
