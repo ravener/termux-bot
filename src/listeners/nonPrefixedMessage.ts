@@ -26,7 +26,7 @@ const UNICODE_REACTIONS = ['👾', '🪩', '😺', '😸'];
 
 const timeouts = new Set<string>();
 
-export class NonPrefixeMessageListener extends Listener<typeof Events.NonPrefixedMessage> {
+export class NonPrefixedMessageListener extends Listener<typeof Events.NonPrefixedMessage> {
     public override async run(message: Message) {
         if (!message.inGuild()) return;
         if (message.author.bot || message.webhookId) return;
