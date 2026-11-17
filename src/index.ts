@@ -9,6 +9,7 @@ const client = new SapphireClient({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
     ],
     loadMessageCommandListeners: true,
     allowedMentions: {
